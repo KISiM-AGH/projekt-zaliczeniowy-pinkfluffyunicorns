@@ -1,4 +1,5 @@
 import "reflect-metadata";
+import "dotenv/config";
 import {createConnection} from "typeorm";
 import {User} from "./typeorm/entity/User";
 import config from "../ormconfig";
@@ -8,6 +9,9 @@ createConnection(config).then(async connection => {
     const user = new User();
     user.firstName = "Timber";
     user.lastName = "Saw";
+    user.email = "mikewasowski@mail.com";
+    user.user_role = "admin";
+    user.password = "wielkafoka123"
     await connection.manager.save(user);
     console.log("Saved a new user with id: " + user.id);
 

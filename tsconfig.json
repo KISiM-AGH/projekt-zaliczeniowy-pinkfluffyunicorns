@@ -1,15 +1,24 @@
 {
   "compilerOptions": {
+    "target": "es5",
     "module": "commonjs",
-    "target": "es6",
-    "sourceMap": true,
-    "outDir": "./dist",
-    "experimentalDecorators": true,
+    "moduleResolution": "node",
     "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "baseUrl": "./src",
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap":true,
+    "outDir": "./dist",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
     "strict": true,
-    "baseUrl": "./src"
+    "strictPropertyInitialization": false,
+    "noImplicitReturns": true,
+    "typeRoots": ["./src/types", "./node_modules/@types"],
+    "skipLibCheck": true
   },
-  "include": ["./src/**/*.ts"],
+  "include": ["./src/**/*.ts", "./ormconfig.ts"],
   "exclude": [
     "node_modules"
   ]

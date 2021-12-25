@@ -6,17 +6,21 @@ const env = process.env as ProcessEnv;
 
 const config: ConnectionOptions = {
 
-    type : 'sqlite',
-    database : "database.sqlite",
-    synchronize : false,
+    type : 'mysql',
+    host : env.MYSQL_HOST,
+    port : Number(env.MYSQL_PORT),
+    database : env.MYSQL_DB,
+    username : env.MYSQL_USER,
+    password : env.MYSQL_PASSWORD,
+    synchronize : true,
     logging: true,
     entities : ["./src/typeorm/entity/**/*.ts"],
-    migrations : ["src/typeorm/migration/**/*.ts"],
+    migrations : ["./src/typeorm/migration/**/*.ts"],
     subscribers : ["./src/typeorm/subscriber/**/*.ts"],
     cli:{
-        entitiesDir : "./src/typeorm/entity",
-        migrationsDir: "./src/typeorm/migration",
-        subscribersDir: "/src/typeorm/subscriber"
+        entitiesDir : "src/typeorm/entity",
+        migrationsDir: "src/typeorm/migration",
+        subscribersDir: "src/typeorm/subscriber"
     },
     namingStrategy: new SnakeNamingStrategy()
 }

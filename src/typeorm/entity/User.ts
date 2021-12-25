@@ -1,23 +1,25 @@
-import {Entity, PrimaryGeneratedColumn, Column, Unique} from "typeorm";
+import {Column, Entity, PrimaryGeneratedColumn} from "typeorm";
+
 
 @Entity()
 export class User {
 
     @PrimaryGeneratedColumn()
-    id: number | undefined;
+    id: number;
 
     @Column()
-    firstName: string | undefined;
+    firstName: string;
 
     @Column()
-    lastName: string | undefined;
+    lastName: string;
 
     @Column({unique:true})
-    email: string | undefined;
+    email: string;
 
     @Column()
-    password: string | undefined;
+    password: string;
 
     @Column({type:"varchar",length:15})
-    user_role: string | undefined;
+    user_role: string;
 }
+
