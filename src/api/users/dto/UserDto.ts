@@ -1,0 +1,14 @@
+import {UserEntity} from "../../../typeorm/entity/UserEntity";
+
+export class UserDto{
+    readonly email : string;
+    readonly password : string;
+    readonly firstName : string;
+    readonly lastName : string;
+
+    constructor(entity : UserEntity) {
+        this.email = entity.email;
+        this.firstName = entity.firstName;
+        this.lastName = entity.lastName;
+    }
+}
