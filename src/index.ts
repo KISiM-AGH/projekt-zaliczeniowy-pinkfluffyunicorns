@@ -5,15 +5,15 @@ import express from 'express';
 import helmet from 'helmet';
 import morgan from "morgan";
 
-// import {errorHandler, routingNotFoundHandler} from "./middleware";
-// import routes from "./routes";
+import {errorHandler, routingNotFoundHandler} from "./middleware";
+import routes from "./routes";
 import {dbCreateConnection} from "./typeorm/dbCreateConnection";
 import {queryParser} from 'express-query-parser';
 import cookieParser from "cookie-parser";
 
 export const app = express();
 app.use(cookieParser());
-app.use(helmet);
+app.use(helmet());
 app.use(express.json());
 app.use(
     queryParser({
@@ -23,9 +23,9 @@ app.use(
     })
 )
 app.use(morgan('combined'));
-// app.use('/api', routes);
-// app.use(errorHandler);
-// app.use(routingNotFoundHandler);
+app.use('/api', routes);
+app.use(errorHandler);
+app.use(routingNotFoundHandler);
 
 const port = process.env.PORT || 9501;
 app.listen(port,()=>{

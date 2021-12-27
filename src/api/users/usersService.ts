@@ -1,6 +1,6 @@
 import {CreateUserDto} from "./dto/CreateUserDto"
 import {getCustomRepository} from "typeorm";
-import {UserRepository} from "../../repositories/UserRepository";
+import {UserRepository} from "../../typeorm/repositories/UserRepository";
 import {UserEntity} from "../../typeorm/entity/UserEntity";
 
 export const getUserByEmail = async (email : string): Promise<UserEntity | undefined> => {
