@@ -19,7 +19,7 @@ const config: ConnectionOptions = {
     subscribers : ["./src/typeorm/subscribers/**/*.ts"],
     cli:{
         entitiesDir : "src/typeorm/entity",
-        migrationsDir: "src/typeorm/migration",
+        migrationsDir: "src/typeorm/migrations",
         subscribersDir: "src/typeorm/subscribers"
     },
     namingStrategy: new SnakeNamingStrategy()

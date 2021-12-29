@@ -6,15 +6,18 @@ export class ProductEntity{
     @PrimaryGeneratedColumn()
     id : number;
 
-    @Column()
-    name : string;
+    @Column({unique: true})
+    productName : string;
+
+    @Column("text", )
+    description: string;
 
     @Column()
-    type : string;
+    productType : string;
 
-    @Column()
+    @Column({type: "float"})
     price : number;
 
-    @Column()
+    @Column({type: "integer"})
     amount : number;
 }
