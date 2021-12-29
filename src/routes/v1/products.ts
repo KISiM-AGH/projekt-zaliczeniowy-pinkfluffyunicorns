@@ -5,6 +5,6 @@ import {CreateProductDto} from "../../api/products/dto/CreateProductDto";
 
 const router = Router();
 router.post('/', bodyValidate(CreateProductDto), addProduct);
-router.delete('/rm', bodyValidate(CreateProductDto), removeProduct)
+router.delete('/', bodyValidate(CreateProductDto), removeProduct)
 
 export default router;
