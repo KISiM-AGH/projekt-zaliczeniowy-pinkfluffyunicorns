@@ -4,7 +4,7 @@ import {UserExistException} from "../../exceptions/UserExistException";
 import {BadRequestException} from "../../exceptions/BadRequestException";
 import {CreateUserDto} from "./dto/CreateUserDto";
 import {UserDto} from "./dto/UserDto";
-// import {RequestWithUser}
+import {RequestWithUser} from "../../typeorm/types/Express"
 
 export const register = async (req: Request, res: Response, next : NextFunction) => {
     const data = req.body as CreateUserDto;
@@ -23,3 +23,8 @@ export const register = async (req: Request, res: Response, next : NextFunction)
         return next(new BadRequestException());
     }
 }
+
+// export const userCheck = async (req : Request, res : Response, next : NextFunction) => {
+//     const user = (req as RequestWithUser).user;
+//     return res.json(user);
+// }

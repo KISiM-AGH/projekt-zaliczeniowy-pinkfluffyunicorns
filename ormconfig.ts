@@ -15,12 +15,12 @@ const config: ConnectionOptions = {
     synchronize : false,
     logging: true,
     entities : ["./src/typeorm/entity/**/*.ts"],
-    migrations : ["./src/typeorm/migration/**/*.ts"],
-    subscribers : ["./src/typeorm/subscriber/**/*.ts"],
+    migrations : ["./src/typeorm/migrations/**/*.ts"],
+    subscribers : ["./src/typeorm/subscribers/**/*.ts"],
     cli:{
         entitiesDir : "src/typeorm/entity",
         migrationsDir: "src/typeorm/migration",
-        subscribersDir: "src/typeorm/subscriber"
+        subscribersDir: "src/typeorm/subscribers"
     },
     namingStrategy: new SnakeNamingStrategy()
 }

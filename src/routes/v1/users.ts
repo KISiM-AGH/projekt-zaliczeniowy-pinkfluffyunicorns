@@ -6,6 +6,6 @@ import {CreateUserDto} from "../../api/users/dto/CreateUserDto";
 
 const router = Router();
 router.post('/', bodyValidate(CreateUserDto), register);
-router.get('/', bodyValidate(CreateUserDto), )
+// router.get('/', bodyValidate(CreateUserDto), )
 
 export default router;
