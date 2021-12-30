@@ -1,9 +1,10 @@
 import {NextFunction, Response, Request} from "express";
-import {createProduct, getProductByName, deleteProduct} from "./productsService";
+import {createProduct, getProductByName, deleteProduct, getProducts} from "./productsService";
 import {BadRequestException} from "../../exceptions/BadRequestException";
 import {CreateProductDto} from "./dto/CreateProductDto";
 import {ProductDto} from "./dto/ProductDto";
 import {ProductExistException} from "../../exceptions/ProductExistException";
+import {SearchProductDto} from "./dto/SearchProductDto";
 
 
 export const addProduct = async (req: Request, res: Response, next: NextFunction) =>{
@@ -38,3 +39,15 @@ export const removeProduct = async (req: Request, res: Response, next:NextFuncti
         return next(new BadRequestException());
     }
 }
+
+export const listProducts = async (req: Request, res: Response, next: NextFunction) =>{
+    const searchQuery = req.query as unknown as SearchProductDto;
+
+    try{
+        const [products, total] = await getProducts(searchQuery);
+        res.header("X-Products-Total", String(total));
+        return res.json(products)
+    }catch(err){
+        return next(new BadRequestException((<Error>err).message));
+    }
+};

@@ -1,5 +1,5 @@
 import {NextFunction, Request, Response} from "express";
-import {createUser, getUserByEmail} from "./usersService";
+import {createUser, getUserByEmail, removeUser} from "./usersService";
 import {UserExistException} from "../../exceptions/UserExistException";
 import {BadRequestException} from "../../exceptions/BadRequestException";
 import {CreateUserDto} from "./dto/CreateUserDto";
@@ -20,6 +20,24 @@ export const register = async (req: Request, res: Response, next : NextFunction)
         res.status(201).json(new UserDto(newUser));
 
         }catch (err) {
+        return next(new BadRequestException());
+    }
+}
+
+export const deleteUser = async (req: Request, res: Response, next : NextFunction) =>{
+    const data = req.body as CreateUserDto;
+
+    let user = await getUserByEmail(data.email);
+
+    if(!user){
+        return next(new BadRequestException());
+    }
+
+    try{
+        await removeUser(user);
+        res.status(204).json("User removed successfully")
+    }
+    catch (err){
         return next(new BadRequestException());
     }
 }

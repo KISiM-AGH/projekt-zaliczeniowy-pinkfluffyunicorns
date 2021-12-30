@@ -6,7 +6,7 @@ import {UserEntity} from "../../typeorm/entity/UserEntity";
 export const getUserByEmail = async (email : string): Promise<UserEntity | undefined> => {
     const userRepository = getCustomRepository(UserRepository);
     return await userRepository.findOne({where:{email}});
-}
+};
 
 export const createUser = async (data: CreateUserDto) : Promise<UserEntity> => {
     const userRepository = getCustomRepository(UserRepository);
@@ -19,4 +19,9 @@ export const createUser = async (data: CreateUserDto) : Promise<UserEntity> => {
     newUser.userRole = data.userRole;
 
     return await userRepository.save(newUser);
-}
+};
+
+export const removeUser = async (data: UserEntity) => {
+    const userRepository = getCustomRepository(UserRepository);
+    return await userRepository.remove(data);
+};

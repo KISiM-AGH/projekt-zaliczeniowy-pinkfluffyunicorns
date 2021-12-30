@@ -1,11 +1,33 @@
 import {ProductRepository} from "../../typeorm/repositories/ProductRepository";
 import {CreateProductDto} from "./dto/CreateProductDto";
 import {ProductEntity} from "../../typeorm/entity/ProductEntity";
-import {getCustomRepository} from "typeorm";
+import {getCustomRepository, Like} from "typeorm";
+import {SearchProductDto} from "./dto/SearchProductDto";
 
 export const getProductByName = async (productName:string) : Promise <ProductEntity | undefined> =>{
     const productRepository = getCustomRepository(ProductRepository);
     return await productRepository.findOne({where:{productName}});
+}
+
+export const getProducts = async (data:SearchProductDto) : Promise<[ProductEntity[], number]>=>{
+    const {offset, limit, productName, sortBy, sortOrder} =data;
+
+    const productRepository = getCustomRepository(ProductRepository);
+
+    const opt= {
+        skip: offset,
+        take: limit,
+        where: productName? {productName: Like (`%${productName}$%`)}: undefined,
+        order:{
+            [sortBy]: sortOrder
+        }
+    }
+    //relations - array of relation
+
+    const productPromise =productRepository.find(opt);
+    const countPromise = productRepository.count(opt);
+
+    return await Promise.all([productPromise, countPromise]);
 }
 
 export const createProduct = async (data: CreateProductDto) : Promise<ProductEntity> => {
