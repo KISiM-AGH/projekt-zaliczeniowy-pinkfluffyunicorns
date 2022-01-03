@@ -1,4 +1,5 @@
-import {Column, Entity, PrimaryGeneratedColumn} from "typeorm";
+import {Column, Entity, JoinColumn, JoinTable, OneToOne, PrimaryGeneratedColumn} from "typeorm";
+import {CartEntity} from "./CartEntity";
 
 
 @Entity("user")
@@ -21,5 +22,9 @@ export class UserEntity {
 
     @Column()
     lastName: string;
+
+    @OneToOne(type => CartEntity, cart => cart.client, {onDelete: "CASCADE"})
+    @JoinColumn()
+    cart : CartEntity;
 }
 
