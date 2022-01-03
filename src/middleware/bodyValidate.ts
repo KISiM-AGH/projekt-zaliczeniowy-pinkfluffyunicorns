@@ -11,7 +11,9 @@ export function bodyValidate<T extends object>(type:ClassConstructor<T>): Reques
                     req.body = input as any;
                     next();
                 }
-                else next(errors);
+                else {
+                    next(errors);
+                }
             }
         )
     }

@@ -13,6 +13,7 @@ export class UserDto{
     }
 
     constructor(entity : UserEntity) {
+        console.log(entity);
         this.email = entity.email;
         this.firstName = entity.firstName;
         this.lastName = entity.lastName;

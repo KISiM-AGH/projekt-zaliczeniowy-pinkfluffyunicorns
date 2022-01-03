@@ -17,6 +17,7 @@ export const createUser = async (data: CreateUserDto) : Promise<UserEntity> => {
     newUser.firstName = data.firstName;
     newUser.lastName = data.lastName;
     newUser.userRole = data.userRole;
+    newUser.address = data.address;
 
     return await userRepository.save(newUser);
 };
