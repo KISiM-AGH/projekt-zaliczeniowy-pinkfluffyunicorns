@@ -21,5 +21,14 @@ export class UserEntity {
 
     @Column()
     lastName: string;
+
+    @Column({type: "json"})
+    address: {
+        city: string;
+        street: string;
+        homeNumber: string;
+        postalCode: string;
+    }
+
 }
 
