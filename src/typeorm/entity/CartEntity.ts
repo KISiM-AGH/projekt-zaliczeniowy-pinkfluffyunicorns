@@ -10,8 +10,6 @@ export class CartEntity{
     @OneToOne(type => UserEntity, client => client.cart)
     client : UserEntity;
 
-    @ManyToMany(type => ProductEntity, product => product)
-    // products :
-
-
+    @ManyToMany(type => ProductEntity, product => product.id )
+    products : ProductEntity[]
 }

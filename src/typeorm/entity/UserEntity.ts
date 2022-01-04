@@ -15,7 +15,7 @@ export class UserEntity {
     password: string;
 
     @Column("varchar", {length:15, default:"ghost"})
-    userRole: string;
+    userRole= "user";
 
     @Column()
     firstName: string;
@@ -23,8 +23,16 @@ export class UserEntity {
     @Column()
     lastName: string;
 
-    @OneToOne(type => CartEntity, cart => cart.client, {onDelete: "CASCADE"})
-    @JoinColumn()
-    cart : CartEntity;
+    @Column({type: "json"})
+    address: {
+        city: string;
+        street: string;
+        homeNumber: string;
+        postalCode: string;
+    }
+
+    @OneToOne(type => CartEntity)
+    cart: CartEntity
+
 }
 

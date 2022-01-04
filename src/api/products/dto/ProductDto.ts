@@ -12,6 +12,6 @@ export class ProductDto {
         this.productType = entity.productType;
         this.description = entity.description;
         this.price = entity.price;
-        this.amount = entity.amount;
+        this.amount = entity.quantity;
     }
 }

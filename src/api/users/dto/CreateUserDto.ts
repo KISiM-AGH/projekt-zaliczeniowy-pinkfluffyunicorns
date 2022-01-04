@@ -1,4 +1,4 @@
-import {IsEmail, IsNotEmpty, IsNumber, IsOptional, IsString, MinLength} from "class-validator";
+import {IsEmail, IsJSON, IsNotEmpty, IsNumber, IsOptional, IsString, MinLength} from "class-validator";
 
 export class CreateUserDto{
     @IsEmail()
@@ -19,7 +19,17 @@ export class CreateUserDto{
     readonly lastName : string;
     
     @IsString()
+    @IsOptional()
     readonly userRole: string;
+
+    @IsJSON()
+    @IsNotEmpty()
+    readonly address: {
+        city: string;
+        street: string;
+        homeNumber: string;
+        postalCode: string;
+    }
 
 
 }

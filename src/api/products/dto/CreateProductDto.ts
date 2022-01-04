@@ -19,5 +19,5 @@ export class CreateProductDto{
 
     @IsNumber()
     @IsNotEmpty()
-    readonly amount : number;
+    readonly quantity : number;
 }

@@ -38,7 +38,7 @@ export const createProduct = async (data: CreateProductDto) : Promise<ProductEnt
     newProduct.productType = data.productType;
     newProduct.description = data.description;
     newProduct.price = data.price;
-    newProduct.amount = data.amount;
+    newProduct.quantity = data.quantity;
 
     return await productRepository.save(newProduct);
 }
