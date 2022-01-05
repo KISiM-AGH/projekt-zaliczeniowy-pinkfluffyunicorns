@@ -4,6 +4,7 @@ import "dotenv/config";
 import express from 'express';
 import helmet from 'helmet';
 import morgan from "morgan";
+import cors from "cors";
 
 import {errorHandler, routingNotFoundHandler} from "./middleware";
 import routes from "./routes";
@@ -15,6 +16,10 @@ export const app = express();
 app.use(cookieParser());
 app.use(helmet());
 app.use(express.json());
+app.use(cors({
+    origin:'http://localhost:3000',
+    credentials: true
+}))
 app.use(
     queryParser({
         parseNull: true,

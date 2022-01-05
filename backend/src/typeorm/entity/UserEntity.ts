@@ -1,5 +1,6 @@
 import {Column, Entity, JoinColumn, JoinTable, OneToOne, PrimaryGeneratedColumn} from "typeorm";
 import {CartEntity} from "./CartEntity";
+import {UserRole} from "../../constants/UserRole";
 
 
 @Entity("user")
@@ -14,8 +15,8 @@ export class UserEntity {
     @Column()
     password: string;
 
-    @Column("varchar", {length:15, default:"ghost"})
-    userRole= "user";
+    @Column({type : "enum", enum:UserRole, default: UserRole.USER})
+    userRole: UserRole;
 
     @Column()
     firstName: string;
