@@ -5,6 +5,7 @@ import {BadRequestException} from "../../exceptions/BadRequestException";
 import {CreateUserDto} from "./dto/CreateUserDto";
 import {UserDto} from "./dto/UserDto";
 import {RequestWithUser} from "../../typeorm/types/Express"
+import {RemoveUserDto} from "./dto/RemoveUserDto";
 
 export const register = async (req: Request, res: Response, next : NextFunction) => {
     const data = req.body as CreateUserDto;
@@ -26,7 +27,7 @@ export const register = async (req: Request, res: Response, next : NextFunction)
 }
 
 export const deleteUser = async (req: Request, res: Response, next : NextFunction) =>{
-    const data = req.body as CreateUserDto;
+    const data = req.body as RemoveUserDto;
 
     let user = await getUserByEmail(data.email);
 
