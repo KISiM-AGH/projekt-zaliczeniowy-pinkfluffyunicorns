@@ -47,7 +47,9 @@ export const basicAuthentication = async (req: Request, res: Response, next: Nex
 }
 
 
-export const logout = () => {
-        localStorage.removeItem('isLogged')
-        localStorage.removeItem("auth")
+export const logout = async (req: Request, res: Response, next: NextFunction) => {
+    res.clearCookie("auth");
+    res.clearCookie("isLogged");
+
+    res.status(200).send("OK");
 }

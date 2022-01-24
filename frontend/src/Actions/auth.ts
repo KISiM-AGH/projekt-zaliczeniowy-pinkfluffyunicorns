@@ -11,7 +11,7 @@ const auth = {
         }),
 
 
-    logout: () => client.post('/logout')
+    logout: () => client.post('/auth/logout')
 }
 
 
