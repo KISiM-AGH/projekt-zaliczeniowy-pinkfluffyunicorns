@@ -4,31 +4,16 @@ import styles from "./Navigation.module.scss"
 import {useCookies} from "@react-smart/react-cookie-service";
 
 
-import {Container} from "@mantine/core";
-
 const getActive = (path: string, target: string) => path === target ? styles.active : undefined
 
 export const Navigation = () => {
-    const { check } = useCookies();     // cookies to obiekt. Klucze to nazwy cookiesów
+    const { check } = useCookies();
 
     const location = useLocation();
     const path = location.pathname;
 
 
     return (
-    //     <nav className={styles.navigation}>
-    //         <ul>
-    //             {cookies.isLogged
-    //                 ? <li>
-    //                 Jesteś zalogowany
-    //                 </li>
-    //                 : <li className={getActive(path, '/login')}>
-    //                     <Link to='/login'> Zaloguj się</Link>
-    //                 </li>
-    //
-    //             }
-    //         </ul>
-    // </nav>
     <nav className={styles.navigation}>
         <ul>
             {check('isLogged')
