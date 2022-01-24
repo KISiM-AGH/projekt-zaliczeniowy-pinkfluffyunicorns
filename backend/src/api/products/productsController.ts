@@ -5,6 +5,14 @@ import {CreateProductDto} from "./dto/CreateProductDto";
 import {ProductDto} from "./dto/ProductDto";
 import {ProductExistException} from "../../exceptions/ProductExistException";
 import {SearchProductDto} from "./dto/SearchProductDto";
+import {DeleteProductDto} from "./dto/DeleteProductDto";
+import exp from "constants";
+import {UserDto} from "../users/dto/UserDto";
+import {getUserByEmail} from "../users/usersService";
+import {CartEntity} from "../../typeorm/entity/CartEntity";
+import {getCustomRepository} from "typeorm";
+import {UserRepository} from "../../typeorm/repositories/UserRepository";
+import {CartRepository} from "../../typeorm/repositories/CartRepository";
 
 
 export const addProduct = async (req: Request, res: Response, next: NextFunction) =>{
@@ -25,7 +33,7 @@ export const addProduct = async (req: Request, res: Response, next: NextFunction
 }
 
 export const removeProduct = async (req: Request, res: Response, next:NextFunction) =>{
-    const data = req.body as CreateProductDto;
+    const data = req.body as DeleteProductDto;
     let product = await getProductByName(data.productName);
 
     if(!product){
@@ -51,3 +59,4 @@ export const listProducts = async (req: Request, res: Response, next: NextFuncti
         return next(new BadRequestException((<Error>err).message));
     }
 };
+

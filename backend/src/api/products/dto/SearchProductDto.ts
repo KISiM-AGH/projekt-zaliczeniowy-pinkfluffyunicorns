@@ -16,7 +16,7 @@ export class SearchProductDto{
     readonly productName? :string;
 
     @IsIn(["id", "productName", "price"])
-    readonly sortBy = "id";
+    readonly sortBy = "productName";
 
     @IsEnum(SortOrder)
     readonly sortOrder = SortOrder.ASC

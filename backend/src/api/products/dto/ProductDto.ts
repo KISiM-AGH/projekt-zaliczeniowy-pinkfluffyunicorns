@@ -9,7 +9,6 @@ export class ProductDto {
 
     constructor(entity: ProductEntity) {
         this.productName = entity.productName;
-        this.productType = entity.productType;
         this.description = entity.description;
         this.price = entity.price;
         this.amount = entity.quantity;

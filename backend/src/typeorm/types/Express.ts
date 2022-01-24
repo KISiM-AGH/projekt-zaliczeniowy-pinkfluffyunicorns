@@ -7,3 +7,9 @@ export interface RequestWithUser extends Request{
         role : UserRole
     };
 }
+
+// export interface RequestWithProduct extends RequestWithUser{
+//     product: {
+//         productName : string | undefined
+//     }
+// }
