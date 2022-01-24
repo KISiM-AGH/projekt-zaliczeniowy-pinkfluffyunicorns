@@ -1,5 +1,7 @@
-import {Column, Entity, JoinColumn, JoinTable, OneToOne, PrimaryGeneratedColumn} from "typeorm";
+import {Column, Entity, JoinColumn, JoinTable, OneToMany, OneToOne, PrimaryGeneratedColumn} from "typeorm";
 import {CartEntity} from "./CartEntity";
+import {UserRole} from "../../constants/UserRole";
+import {OrderEntity} from "./OrderEntity";
 
 
 @Entity("user")
@@ -14,8 +16,8 @@ export class UserEntity {
     @Column()
     password: string;
 
-    @Column("varchar", {length:15, default:"ghost"})
-    userRole= "user";
+    @Column({type : "enum", enum:UserRole, default: UserRole.USER})
+    userRole: UserRole;
 
     @Column()
     firstName: string;
@@ -31,8 +33,11 @@ export class UserEntity {
         postalCode: string;
     }
 
-    @OneToOne(type => CartEntity)
+    @OneToOne(type => CartEntity, cart => cart.client, {cascade:["insert"],
+        onDelete:"CASCADE"})
     cart: CartEntity
 
+    @OneToMany(type => OrderEntity, orders => orders.buyer)
+    orders : OrderEntity[]
 }
 

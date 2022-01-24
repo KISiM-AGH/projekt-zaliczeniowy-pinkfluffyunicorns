@@ -9,10 +9,6 @@ export class CreateProductDto{
     @IsNotEmpty()
     readonly description: string;
 
-    @IsString()
-    @IsNotEmpty()
-    readonly productType : string;
-
     @IsNumber()
     @IsNotEmpty()
     readonly price : number;

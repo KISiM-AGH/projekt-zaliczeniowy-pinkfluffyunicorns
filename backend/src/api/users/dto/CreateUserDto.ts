@@ -1,4 +1,5 @@
-import {IsEmail, IsJSON, IsNotEmpty, IsNumber, IsOptional, IsString, MinLength} from "class-validator";
+import {IsEmail, IsEnum, IsJSON, IsNotEmpty, IsNumber, IsOptional, IsString, MinLength} from "class-validator";
+import {UserRole} from "../../../constants/UserRole";
 
 export class CreateUserDto{
     @IsEmail()
@@ -18,9 +19,9 @@ export class CreateUserDto{
     @IsNotEmpty()
     readonly lastName : string;
     
-    @IsString()
+    @IsEnum(UserRole)
     @IsOptional()
-    readonly userRole: string;
+    readonly userRole: UserRole;
 
     @IsJSON()
     @IsNotEmpty()

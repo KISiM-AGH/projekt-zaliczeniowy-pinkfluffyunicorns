@@ -26,7 +26,7 @@ export const basicAuthentication = async (req: Request, res: Response, next: Nex
             return next(new AccessDeniedException());
         }
 
-        const token = sign(user.id);
+        const token = sign(user.id, user.userRole.toString());
 
         const publicCookies : CookieOptions = {
             secure: process.env.NODE_ENV === "production",
