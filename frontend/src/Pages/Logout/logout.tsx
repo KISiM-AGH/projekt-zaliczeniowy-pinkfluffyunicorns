@@ -8,10 +8,12 @@ import {Center, Container, Space} from "@mantine/core";
 export const Logout = () => {
     const navigate = useNavigate();
     const [message, setMessage] = useState("Wylogowywanie");
-    auth.logout().then(() => {
-        setMessage("Wylogowano");
-        setTimeout(() => navigate('/'), 5000)
-    }).catch(() => {})
+    // auth.logout().then(() => {
+    //     setMessage("Wylogowano");
+    //     setTimeout(() => navigate('/'), 5000)
+    // }).catch(() => {}
+
+    auth.logout().then(() => navigate('/'));
 
     return <Container>
         <Space h="md"/>
