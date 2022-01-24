@@ -4,7 +4,6 @@ import {basicAuthentication, logout} from "../../api/authentication/authenticati
 const router = Router();
 
 router.post('/', basicAuthentication);
-
 router.post('/logout', logout);
 
 export default router;

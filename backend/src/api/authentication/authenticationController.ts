@@ -7,6 +7,8 @@ import {BadRequestException} from "../../exceptions/BadRequestException";
 import {matchPassword} from "../../services/hashPassword";
 import {UserDto} from "../users/dto/UserDto";
 import {getUserByEmail} from "../users/usersService";
+import {signedCookie} from "cookie-parser";
+import {constants} from "http2";
 
 export const basicAuthentication = async (req: Request, res: Response, next: NextFunction) => {
     const authHeader = req.headers.authorization;
@@ -47,7 +49,9 @@ export const basicAuthentication = async (req: Request, res: Response, next: Nex
 }
 
 
-export const logout = () => {
-        localStorage.removeItem('isLogged')
-        localStorage.removeItem("auth")
+export const logout = async (req: Request, res: Response, next: NextFunction) => {
+    res.clearCookie("auth");
+    res.clearCookie("isLogged");
+
+    res.status(200).send("OK");
 }
