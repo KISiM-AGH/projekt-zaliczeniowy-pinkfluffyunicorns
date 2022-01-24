@@ -1,13 +1,15 @@
 import {Link, useLocation} from "react-router-dom";
 import React from "react";
 import styles from "./Navigation.module.scss"
-import {useCookies} from "react-cookie";
+import {useCookies} from "@react-smart/react-cookie-service";
+
+
 import {Container} from "@mantine/core";
 
 const getActive = (path: string, target: string) => path === target ? styles.active : undefined
 
 export const Navigation = () => {
-    const [cookies] = useCookies(["isLogged"]);     // cookies to obiekt. Klucze to nazwy cookiesów
+    const { check } = useCookies();     // cookies to obiekt. Klucze to nazwy cookiesów
 
     const location = useLocation();
     const path = location.pathname;
@@ -29,7 +31,7 @@ export const Navigation = () => {
     // </nav>
     <nav className={styles.navigation}>
         <ul>
-            {cookies.isLogged
+            {check('isLogged')
                 ? <>
                     <li className={getActive(path, '/')}>
                         <Link to='/'>Strona główna</Link>
