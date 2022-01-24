@@ -1,6 +1,7 @@
-import {Column, Entity, JoinColumn, JoinTable, OneToOne, PrimaryGeneratedColumn} from "typeorm";
+import {Column, Entity, JoinColumn, JoinTable, OneToMany, OneToOne, PrimaryGeneratedColumn} from "typeorm";
 import {CartEntity} from "./CartEntity";
 import {UserRole} from "../../constants/UserRole";
+import {OrderEntity} from "./OrderEntity";
 
 
 @Entity("user")
@@ -32,8 +33,11 @@ export class UserEntity {
         postalCode: string;
     }
 
-    @OneToOne(type => CartEntity)
+    @OneToOne(type => CartEntity, cart => cart.client, {cascade:["insert"],
+        onDelete:"CASCADE"})
     cart: CartEntity
 
+    @OneToMany(type => OrderEntity, orders => orders.buyer)
+    orders : OrderEntity[]
 }
 

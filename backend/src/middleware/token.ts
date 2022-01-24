@@ -17,7 +17,7 @@ export const token = (required : true) => (req: Request, res: Response, next: Ne
     }
 
     const user ={
-        id:parseInt(decodedToken.sub!),
+        id: parseInt(decodedToken.sub!),
         role : decodedToken.roles as UserRole
     }
 

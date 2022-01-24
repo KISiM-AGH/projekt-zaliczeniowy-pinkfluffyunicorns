@@ -1,5 +1,7 @@
 import {Column, Entity, ManyToMany, OneToMany, PrimaryGeneratedColumn} from "typeorm";
 import {CartEntity} from "./CartEntity";
+import {OrderItemEntity} from "./OrderItemEntity";
+// import {CartItemEntity} from "./CartItemEntity";
 
 @Entity("product")
 export class ProductEntity{
@@ -13,15 +15,17 @@ export class ProductEntity{
     @Column("text", )
     description: string;
 
-    @Column()
-    productType : string;
-
     @Column({type: "float"})
     price : number;
 
     @Column({type: "integer"})
     quantity : number;
 
-    @ManyToMany(type => CartEntity, cart => cart.id)
-    carts : CartEntity[]
+    // @OneToMany(type => CartItemEntity, cartItem => cartItem.product)
+    @ManyToMany(type => CartEntity, cart => cart.products)
+    cart : CartEntity[]
+    // cartItems : CartEntity[]
+
+    @OneToMany(type => OrderItemEntity,orderItem => orderItem.product)
+    orderItems: OrderItemEntity[]
 }

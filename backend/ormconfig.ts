@@ -12,7 +12,7 @@ const config: ConnectionOptions = {
     database : env.MYSQL_DB,
     username : env.MYSQL_USER,
     password : env.MYSQL_PASSWORD,
-    synchronize : false,
+    synchronize : true,
     logging: true,
     entities : ["./src/typeorm/entity/**/*.ts"],
     migrations : ["./src/typeorm/migrations/**/*.ts"],
