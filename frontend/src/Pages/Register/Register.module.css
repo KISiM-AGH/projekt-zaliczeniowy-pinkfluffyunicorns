@@ -25,6 +25,11 @@
     width: 100%;
     display: flex;
     flex-direction: row;
+    gap:10px;
+}
+
+.Address_container{
+    flex:1;
 }
 
 .Address_input {

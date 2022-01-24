@@ -26,7 +26,7 @@ export const Register: FunctionComponent<Props> = (props: Props) => {
 
     const handleSubmit = (event: FormEvent) => {
         event.preventDefault();
-        let address = JSON.stringify({'city' : city, 'street': street, 'homeNumber': homeNumber, 'postalCode': postalCode})
+        const address = JSON.stringify({'city' : city, 'street': street, 'homeNumber': homeNumber, 'postalCode': postalCode})
         register.register(email, password, name, surname, address).then(
             () => navigate('/')
         ).catch(
@@ -81,7 +81,7 @@ export const Register: FunctionComponent<Props> = (props: Props) => {
                     </div>
                     <label>Uzupełnij adres potrzebny do wysyłki</label>
                     <div className={styles.Address}>
-                        <div>
+                        <div className={styles.Address_container}>
                             <label htmlFor='street'>Ulica</label>
                             <input id='street'
                                    name='street'
@@ -91,7 +91,7 @@ export const Register: FunctionComponent<Props> = (props: Props) => {
                                    onChange={(e) => setStreet(e.target.value)}
                             />
                         </div>
-                        <div>
+                        <div className={styles.Address_container}>
                             <label htmlFor='homeNumber'>Numer domu</label>
                             <input id='homeNumber'
                                    name='homeNumber'
@@ -103,7 +103,7 @@ export const Register: FunctionComponent<Props> = (props: Props) => {
                         </div>
                     </div>
                     <div className={styles.Address}>
-                        <div>
+                        <div className={styles.Address_container}>
                             <label htmlFor='postalCode'>Numer pocztowy</label>
                             <input id='postalCode'
                                    name='postalCode'
@@ -113,7 +113,7 @@ export const Register: FunctionComponent<Props> = (props: Props) => {
                                    onChange={(e) => setPostalCode(e.target.value)}
                             />
                         </div>
-                        <div>
+                        <div className={styles.Address_container}>
                             <label htmlFor='city'>Miasto</label>
                             <input id='city'
                                    name='city'

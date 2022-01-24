@@ -45,3 +45,9 @@ export const basicAuthentication = async (req: Request, res: Response, next: Nex
         return next(new BadRequestException());
     }
 }
+
+
+export const logout = () => {
+        localStorage.removeItem('isLogged')
+        localStorage.removeItem("auth")
+}
