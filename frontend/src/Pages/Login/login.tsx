@@ -29,9 +29,6 @@ export const Login: FunctionComponent<Props> = (props: Props) => {
 
     return (
         <Container size="xl">
-            {/*<Space h="md"/>*/}
-            {/*<Paper padding="md" shadow="xs" radius="lg">Natywny formularz uwierzytelnienia. Aby pokazać jak się*/}
-            {/*    obsługuje formularze natywnie!</Paper>*/}
             <Space h="md"/>
             <Center>
                 <Paper padding="md" shadow="xs" radius="lg">

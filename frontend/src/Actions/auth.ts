@@ -9,6 +9,10 @@ const auth = {
                 password
             }
         }),
+
+
+    logout: () => client.post('/logout')
 }
+
 
 export default auth;

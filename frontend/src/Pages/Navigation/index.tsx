@@ -30,10 +30,21 @@ export const Navigation = () => {
     <nav className={styles.navigation}>
         <ul>
             {cookies.isLogged
-                ? <li>
-                    Jesteś zalogowany
-                </li>
+                ? <>
+                    <li className={getActive(path, '/')}>
+                        <Link to='/'>Strona główna</Link>
+                    </li>
+                    <li className={getActive(path, '/cart')}>
+                        <Link to='/cart'>Koszyk</Link>
+                    </li>
+                    <li className={getActive(path, '/logout')}>
+                        <Link to='/logout'> Wyloguj się </Link>
+                    </li>
+                </>
                 : <>
+                    <li className={getActive(path, '/')}>
+                        <Link to='/'>Strona główna</Link>
+                    </li>
                     <li className={getActive(path, '/login')}>
                         <Link to='/login'> Zaloguj się</Link>
                     </li>
