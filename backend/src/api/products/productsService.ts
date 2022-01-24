@@ -3,7 +3,7 @@ import {CreateProductDto} from "./dto/CreateProductDto";
 import {ProductEntity} from "../../typeorm/entity/ProductEntity";
 import {getCustomRepository, Like} from "typeorm";
 import {SearchProductDto} from "./dto/SearchProductDto";
-import {DeleteProductDto} from "./dto/DeleteProductDto";
+import {FindProductDto} from "./dto/FindProductDto";
 
 export const getProductByName = async (productName:string) : Promise <ProductEntity | undefined> =>{
     const productRepository = getCustomRepository(ProductRepository);
