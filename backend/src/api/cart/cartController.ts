@@ -10,7 +10,7 @@ export const showCartItems = async (req: Request, res:Response, next: NextFuncti
     const user = (req as RequestWithUser).user;
     try{
         let cart = await getCart(user.id!);
-        return res.json(cart?.products)
+        return res.status(200).json(cart?.products)
     }catch (err){
         return next(new BadRequestException((<Error> err).message));
     }
@@ -43,6 +43,9 @@ export const removeItemFromCart = async (req: Request, res:Response, next:NextFu
         let cart = await getCart(user.id!);
         let _product = await getProductById(productId);
         if(!_product){
+            return next(new ProductNotFoundException());
+        }
+        if(!cart?.products.some(products => products.productName === _product?.productName)){
             return next(new BadRequestException());
         }
 

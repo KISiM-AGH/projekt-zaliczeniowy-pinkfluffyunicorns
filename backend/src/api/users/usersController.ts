@@ -46,5 +46,5 @@ export const deleteUser = async (req: Request, res: Response, next : NextFunctio
 
 export const userCheck = async (req : Request, res : Response, next : NextFunction) => {
     const user = (req as RequestWithUser).user;
-    return res.json(user);
+    return res.status(200).json(user);
 }
