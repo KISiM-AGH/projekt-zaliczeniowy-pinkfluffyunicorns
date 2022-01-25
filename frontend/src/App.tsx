@@ -10,6 +10,7 @@ import {Cart} from "./Pages/Cart/cart";
 import {AdminPanel} from "./Pages/AdminPanel/adminPanel";
 import {AddProduct} from "./Pages/AdminPanel/addProduct";
 import {EditProduct} from "./Pages/AdminPanel/editProduct";
+import {AuthRequired, OnlyAdminAccess} from "./Pages/AuthRequired";
 
 function App() {
   return (
@@ -21,10 +22,10 @@ function App() {
             <Route path="/login" element={<Login/>}/>
             <Route path="/register" element={<Register/>}/>
             <Route path="/logout" element={<Logout/>}/>
-            <Route path="/cart" element={<Cart/>}/>
-            <Route path="/adminPanel" element={<AdminPanel/>}/>
-            <Route path="/product/add/:id" element={<AddProduct/>}/>
-            <Route path="/product/edit/:id" element={<EditProduct/>}/>
+            <Route path="/cart" element={<AuthRequired><Cart/></AuthRequired>}/>
+            <Route path="/adminPanel" element={<OnlyAdminAccess><AdminPanel/></OnlyAdminAccess>}/>
+            <Route path="/product/add/:id" element={<OnlyAdminAccess><AddProduct/></OnlyAdminAccess>}/>
+            <Route path="/product/edit/:id" element={<OnlyAdminAccess><EditProduct/></OnlyAdminAccess>}/>
             <Route element={<MainPage/>}/>
           {/*<Route path="/books/add" element={<AuthRequired><BookForm/></AuthRequired>}/>*/}
           {/*<Route path="/books/edit/:id" element={<AuthRequired><BookForm/></AuthRequired>}/>*/}
