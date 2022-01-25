@@ -8,7 +8,8 @@ interface Props {
     id: number,
     productName : string,
     description: string,
-    price : number
+    price : number,
+    delete : Function
 }
 
 const AdminProduct: FunctionComponent<Props> = (props: Props) => {
@@ -17,11 +18,7 @@ const AdminProduct: FunctionComponent<Props> = (props: Props) => {
     const navigate = useNavigate();
 
     const editProduct = (id : number) => {
-        navigate('/')
-    }
-
-    const deleteProduct = (id : number) => {
-        product.deleteProduct(id)
+        navigate(`/product/edit/${id}`)
     }
 
     const secondaryColor = theme.colorScheme === 'dark'
@@ -43,7 +40,7 @@ const AdminProduct: FunctionComponent<Props> = (props: Props) => {
         <Button variant="light" color="blue" fullWidth style={{marginTop: 14}} onClick={() => editProduct(props.id)}>
             Edytuj produkt
         </Button>
-        <Button variant="light" color="blue" fullWidth style={{marginTop: 14}} onClick={() => deleteProduct(props.id)}>
+        <Button variant="light" color="blue" fullWidth style={{marginTop: 14}} onClick={() => props.delete(props.id)}>
             Usuń produkt
         </Button>
 

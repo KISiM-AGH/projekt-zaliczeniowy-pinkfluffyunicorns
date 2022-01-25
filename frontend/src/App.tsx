@@ -9,6 +9,7 @@ import {Logout} from "./Pages/Logout/logout";
 import {Cart} from "./Pages/Cart/cart";
 import {AdminPanel} from "./Pages/AdminPanel/adminPanel";
 import {AddProduct} from "./Pages/AdminPanel/addProduct";
+import {EditProduct} from "./Pages/AdminPanel/editProduct";
 
 function App() {
   return (
@@ -22,7 +23,8 @@ function App() {
             <Route path="/logout" element={<Logout/>}/>
             <Route path="/cart" element={<Cart/>}/>
             <Route path="/adminPanel" element={<AdminPanel/>}/>
-            <Route path="/addProductPanel" element={<AddProduct/>}/>
+            <Route path="/product/add/:id" element={<AddProduct/>}/>
+            <Route path="/product/edit/:id" element={<EditProduct/>}/>
             <Route element={<MainPage/>}/>
           {/*<Route path="/books/add" element={<AuthRequired><BookForm/></AuthRequired>}/>*/}
           {/*<Route path="/books/edit/:id" element={<AuthRequired><BookForm/></AuthRequired>}/>*/}

@@ -15,6 +15,11 @@ export const AdminPanel = () => {
         product.getAll().then(response => setProductInShop(response.data))
     }, [])
 
+    const deleteProduct = (id : number) => {
+        product.deleteProduct(id).then( () => {
+            setProductInShop(productInShop.filter((product) => product.id !== id))
+        })
+    }
 
     return (
         <>
@@ -24,10 +29,10 @@ export const AdminPanel = () => {
                     Dodaj produkt
                 </Button>
             </Container>
-            <Grid>
+            <Grid style={{margin: '10px 0' }}>
                 {productInShop.map((product) =>
                     <Grid.Col span={4} key={product.id}>
-                        <AdminProduct id={product.id} productName={product.productName} description={product.description} price={product.price} />
+                        <AdminProduct id={product.id} productName={product.productName} description={product.description} price={product.price} delete={deleteProduct}/>
                     </Grid.Col>
                 )}
             </Grid>
