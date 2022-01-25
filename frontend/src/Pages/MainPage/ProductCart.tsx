@@ -9,7 +9,7 @@ interface Props {
     price : number
 }
 
-const Product: FunctionComponent<Props> = (props: Props) => {
+const ProductCart: FunctionComponent<Props> = (props: Props) => {
     const { check } = useCookies();
     const theme = useMantineTheme();
 
@@ -38,4 +38,4 @@ const Product: FunctionComponent<Props> = (props: Props) => {
     </Card>
 }
 
-export default Product
+export default ProductCart

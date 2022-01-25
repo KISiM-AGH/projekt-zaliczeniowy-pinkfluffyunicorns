@@ -1,14 +1,15 @@
 import client from '../Services/api'
 
-interface Product {
+export interface Product {
     id: number,
     productName : string,
     description: string,
-    price : number
+    price : number,
+    quantity : number
 }
 
 const products = {
-    getAll: () => client.get<Product[]>('/product'),
+    getAll: () => client.get<Product[]>('/products'),
 }
 
 export default products

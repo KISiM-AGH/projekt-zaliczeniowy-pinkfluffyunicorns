@@ -30,7 +30,7 @@ export const addItemToCart = async (req: Request, res:Response, next:NextFunctio
 
     try {
         await addToCart(cart!, _product);
-        res.status(201).json("Product was successfully added to cart");
+        res.status(201).json("ProductWindow was successfully added to cart");
     }catch (err){
         return next(new BadRequestException((<Error> err).message));
     }
@@ -48,7 +48,7 @@ export const removeItemFromCart = async (req: Request, res:Response, next:NextFu
 
     try {
         await removeFromCart(cart!, _product);
-        res.status(204).json("Product was successfully deleted from cart");
+        res.status(204).json("ProductWindow was successfully deleted from cart");
     }catch (err){
         return next(new BadRequestException((<Error> err).message));
     }
