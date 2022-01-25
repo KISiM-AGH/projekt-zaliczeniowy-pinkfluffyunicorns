@@ -34,6 +34,7 @@ export const Login: FunctionComponent<Props> = (props: Props) => {
                         <div>
                             <label htmlFor="username">Nazwa użytkownika: </label>
                             <input
+                                data-e2e= "username_input"
                                 id="username"
                                 type="text"
                                 required
@@ -45,6 +46,7 @@ export const Login: FunctionComponent<Props> = (props: Props) => {
                         <div>
                             <label htmlFor="password">Hasło: </label>
                             <input
+                                data-e2e="password_input"
                                 id="password"
                                 type="password"
                                 required
@@ -53,7 +55,7 @@ export const Login: FunctionComponent<Props> = (props: Props) => {
                             />
                         </div>
 
-                        <button type="submit" className={styles.Input}>Zaloguj</button>
+                        <button data-e2e="submit" type="submit" className={styles.Input}>Zaloguj</button>
                     </form>
 
                 </Paper>
