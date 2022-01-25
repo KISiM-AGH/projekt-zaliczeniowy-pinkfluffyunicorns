@@ -1,7 +1,6 @@
 import {useEffect, useState} from "react";
 import product, {Product} from "../../Actions/products";
 import {Button, Container, Grid} from "@mantine/core";
-import ProductCart from "../MainPage/ProductCart";
 import AdminProduct from "./adminProduct";
 import {useNavigate} from "react-router-dom";
 

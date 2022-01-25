@@ -4,10 +4,6 @@ import styles from "../Login/Login.module.css";
 import product, {Product} from "../../Actions/products"
 import {useNavigate} from "react-router-dom";
 
-function ErrorIcon() {
-    return null;
-}
-
 export const AddProduct = () => {
     const [productName, setProductName] = useState<string>("");
     const [description, setDescription] = useState<string>("");
@@ -17,7 +13,7 @@ export const AddProduct = () => {
     const navigate = useNavigate();
 
     const handleSubmit = (event: FormEvent) => {
-        event.preventDefault();     // Niezbedne by strona sie nie przeladowala!
+        event.preventDefault();
         product.addProduct(productName, description, price, quantity).then(
             () => navigate('/adminPanel')
         ).catch(() => setError(true)
@@ -84,7 +80,7 @@ export const AddProduct = () => {
             {error &&
                 <Center>
 
-                    <Notification icon={<ErrorIcon/>} onClose={() => {
+                    <Notification onClose={() => {
                         setError(false)
                     }} color="red">
                         Błędne dane

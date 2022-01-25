@@ -1,7 +1,5 @@
 import React, {FunctionComponent} from "react"
 import { Card, Image, Text, Badge, Button, Group, useMantineTheme } from '@mantine/core';
-import {useCookies} from "@react-smart/react-cookie-service";
-import product, {Product} from "../../Actions/products"
 import {useNavigate} from "react-router-dom";
 
 interface Props {
@@ -13,7 +11,6 @@ interface Props {
 }
 
 const AdminProduct: FunctionComponent<Props> = (props: Props) => {
-    const { check } = useCookies();
     const theme = useMantineTheme();
     const navigate = useNavigate();
 

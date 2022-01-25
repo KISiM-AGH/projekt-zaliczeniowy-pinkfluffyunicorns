@@ -27,9 +27,6 @@ function App() {
             <Route path="/product/add/:id" element={<OnlyAdminAccess><AddProduct/></OnlyAdminAccess>}/>
             <Route path="/product/edit/:id" element={<OnlyAdminAccess><EditProduct/></OnlyAdminAccess>}/>
             <Route element={<MainPage/>}/>
-          {/*<Route path="/books/add" element={<AuthRequired><BookForm/></AuthRequired>}/>*/}
-          {/*<Route path="/books/edit/:id" element={<AuthRequired><BookForm/></AuthRequired>}/>*/}
-          {/*<Route path="/books/:id" element={<BookPreview/>}/>*/}
         </Routes>
       </div>
 

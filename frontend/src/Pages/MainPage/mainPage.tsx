@@ -1,7 +1,5 @@
-import {Container, Grid} from "@mantine/core";
-import { Card, Image, Text, Badge, Button, Group, useMantineTheme } from '@mantine/core';
+import {Grid} from "@mantine/core";
 import ProductCart from "./ProductCart";
-import auth from "../../Actions/auth";
 import product, {Product} from "../../Actions/products"
 import {useEffect, useState} from "react";
 

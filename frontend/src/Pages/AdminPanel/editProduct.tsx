@@ -4,10 +4,6 @@ import product, {Product} from "../../Actions/products";
 import {Center, Container, Notification, Paper, Space} from "@mantine/core";
 import styles from "../Login/Login.module.css";
 
-function ErrorIcon() {
-    return null;
-}
-
 export const EditProduct = () => {
     const {id} = useParams<{ id: string }>();
     const [productToEdit, setProductToEdit] = useState<Product>({} as Product)
@@ -24,7 +20,7 @@ export const EditProduct = () => {
     }, [])
 
     const handleSubmit = (event: FormEvent) => {
-        event.preventDefault();     // Niezbedne by strona sie nie przeladowala!
+        event.preventDefault();
         product.editProduct(productToEdit.id, productToEdit.productName, productToEdit.description, productToEdit.price, productToEdit.quantity).then(
             () => navigate('/adminPanel')
         ).catch(() => setError(true)
@@ -115,7 +111,7 @@ export const EditProduct = () => {
             {error &&
                 <Center>
 
-                    <Notification icon={<ErrorIcon/>} onClose={() => {
+                    <Notification onClose={() => {
                         setError(false)
                     }} color="red">
                         Błędne dane

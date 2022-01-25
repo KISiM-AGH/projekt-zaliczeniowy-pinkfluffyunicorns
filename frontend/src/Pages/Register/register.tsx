@@ -4,12 +4,7 @@ import styles from "./Register.module.css";
 import {useNavigate} from "react-router-dom";
 import register from "../../Actions/register";
 
-
 interface Props {
-}
-
-function ErrorIcon() {
-    return null;
 }
 
 export const Register: FunctionComponent<Props> = (props: Props) => {
@@ -134,7 +129,7 @@ export const Register: FunctionComponent<Props> = (props: Props) => {
             {error &&
                 <Center>
 
-                    <Notification icon={<ErrorIcon/>} onClose={() => {
+                    <Notification onClose={() => {
                         setError(false)
                     }} color="red">
                         Błędne dane

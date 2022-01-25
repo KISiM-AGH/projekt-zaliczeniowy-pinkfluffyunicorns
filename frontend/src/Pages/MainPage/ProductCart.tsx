@@ -1,7 +1,7 @@
 import React, {FunctionComponent} from "react"
-import { Card, Image, Text, Badge, Button, Group, useMantineTheme } from '@mantine/core';
+import { Card, Text, Badge, Button, Group, useMantineTheme } from '@mantine/core';
 import {useCookies} from "@react-smart/react-cookie-service";
-import product, {Product} from "../../Actions/products"
+import product from "../../Actions/products"
 
 interface Props {
     id: number,
@@ -26,7 +26,6 @@ const ProductCart: FunctionComponent<Props> = (props: Props) => {
         <Group position="apart" style={{ marginBottom: 5, marginTop: theme.spacing.sm}}>
             <Text weight={500}>{props.productName}</Text>
             <Badge color="pink" variant="light">
-                {/*{props.id}*/}
                 {props.price} $
             </Badge>
         </Group>
