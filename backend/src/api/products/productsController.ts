@@ -27,7 +27,7 @@ export const addProduct = async (req: Request, res: Response, next: NextFunction
 
     try{
         const newProduct = await createProduct(req.body);
-        res.status(201).json(new ListProductDto(newProduct));
+        return res.status(201).json(new ListProductDto(newProduct));
     }catch (err){
         return next(new BadRequestException());
     }
@@ -43,7 +43,7 @@ export const removeProduct = async (req: Request, res: Response, next:NextFuncti
 
     try{
         await deleteProduct(product);
-        res.status(204).json("ProductWindow was successfully deleted");
+        return res.status(204).json("ProductWindow was successfully deleted");
     }catch (err){
         return next(new BadRequestException());
     }
@@ -55,7 +55,7 @@ export const listProducts = async (req: Request, res: Response, next: NextFuncti
     try{
         const [products, total] = await getProducts(searchQuery);
         res.header("X-Products-Total", String(total));
-        return res.json(products)
+        return res.status(200).json(products)
     }catch(err){
         return next(new BadRequestException((<Error>err).message));
     }
@@ -69,7 +69,7 @@ export const showProduct = async (req: Request, res:Response, next : NextFunctio
         if(!product){
             return next(new ProductNotFoundException());
         }
-        res.json(product);
+        return res.status(200).json(product);
     }catch (err){
         return next (new BadRequestException())
     }
@@ -85,7 +85,7 @@ export const editProductCont = async(req: Request, res:Response, next: NextFunct
         }
 
         product = await editProduct(product, data);
-        return res.json(product);
+        return res.status(201).json(product);
     }catch (err){
         return next(new BadRequestException());
     }
