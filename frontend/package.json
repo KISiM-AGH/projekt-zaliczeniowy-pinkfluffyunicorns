@@ -5,6 +5,7 @@
   "dependencies": {
     "@mantine/core": "^3.5.0",
     "@mantine/hooks": "^3.5.0",
+    "@react-smart/react-cookie-service": "^1.0.8",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",

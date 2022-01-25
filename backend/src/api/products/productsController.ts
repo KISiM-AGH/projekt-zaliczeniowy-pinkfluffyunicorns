@@ -37,7 +37,7 @@ export const removeProduct = async (req: Request, res: Response, next:NextFuncti
 
     try{
         await deleteProduct(product);
-        res.status(204).json("Product was successfully deleted");
+        res.status(204).json("ProductWindow was successfully deleted");
     }catch (err){
         return next(new BadRequestException());
     }
