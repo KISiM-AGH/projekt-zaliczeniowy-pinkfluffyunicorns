@@ -5,11 +5,6 @@ import auth from "../../Actions/auth";
 import product, {Product} from "../../Actions/products"
 import {useEffect, useState} from "react";
 
-// const products = [
-//     {id : 1, productName : "PinkUnicorn", description: "Beautiful cute unicorn", price : 25},
-//     {id : 2, productName : "YellowUnicorn", description: "Beautiful cute and fluffy unicorn", price : 35}
-// ]
-
 export const MainPage = () => {
     const [productToshop, setProductToShop] = useState<Product[]>([])
 
