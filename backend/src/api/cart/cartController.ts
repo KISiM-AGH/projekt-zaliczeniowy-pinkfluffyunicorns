@@ -3,7 +3,7 @@ import {RequestWithUser} from "../../typeorm/types/Express";
 import {addToCart, getCart, removeFromCart} from "./cartService";
 import {BadRequestException} from "../../exceptions/BadRequestException";
 import {FindProductDto} from "../products/dto/FindProductDto";
-import {getProductByName} from "../products/productsService";
+import {getProductById, getProductByName} from "../products/productsService";
 
 export const showCartItems = async (req: Request, res:Response, next: NextFunction) =>{
     const user = (req as RequestWithUser).user;
@@ -17,9 +17,9 @@ export const showCartItems = async (req: Request, res:Response, next: NextFuncti
 
 export const addItemToCart = async (req: Request, res:Response, next:NextFunction) =>{
     const user = (req as RequestWithUser).user;
-    const product = req.body as FindProductDto;
+    const productId = parseInt(req.params.id);
     let cart = await getCart(user.id!);
-    let _product = await getProductByName(product.productName);
+    let _product = await getProductById(productId);
     if(!_product){
         return next(new BadRequestException());
     }
@@ -35,9 +35,9 @@ export const addItemToCart = async (req: Request, res:Response, next:NextFunctio
 
 export const removeItemFromCart = async (req: Request, res:Response, next:NextFunction) =>{
     const user = (req as RequestWithUser).user;
-    const product = req.body as FindProductDto;
+    const productId = parseInt(req.params.id);
     let cart = await getCart(user.id!);
-    let _product = await getProductByName(product.productName);
+    let _product = await getProductById(productId);
     if(!_product){
         return next(new BadRequestException());
     }

@@ -10,6 +10,11 @@ export const getProductByName = async (productName:string) : Promise <ProductEnt
     return await productRepository.findOne({where:{productName}});
 }
 
+export const getProductById = async (id : number) : Promise <ProductEntity|undefined> => {
+    const productRepository = getCustomRepository(ProductRepository);
+    return await productRepository.findOne(id);
+}
+
 export const getProducts = async (data:SearchProductDto) : Promise<[ProductEntity[], number]>=>{
     const {offset, limit, productName, sortBy, sortOrder} =data;
 
