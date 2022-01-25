@@ -3,7 +3,6 @@ import {getCustomRepository} from "typeorm";
 import {UserRepository} from "../../typeorm/repositories/UserRepository";
 import {UserEntity} from "../../typeorm/entity/UserEntity";
 import {CartEntity} from "../../typeorm/entity/CartEntity";
-import {CartRepository} from "../../typeorm/repositories/CartRepository";
 
 export const getUserByEmail = async (email : string): Promise<UserEntity | undefined> => {
     const userRepository = getCustomRepository(UserRepository);
@@ -12,7 +11,6 @@ export const getUserByEmail = async (email : string): Promise<UserEntity | undef
 
 export const createUser = async (data: CreateUserDto) : Promise<UserEntity> => {
     const userRepository = getCustomRepository(UserRepository);
-    const cartRepository = getCustomRepository(CartRepository);
 
     const newUser = new UserEntity();
     const newCart = new CartEntity();

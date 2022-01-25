@@ -38,13 +38,14 @@ export const addItemToCart = async (req: Request, res:Response, next:NextFunctio
 export const removeItemFromCart = async (req: Request, res:Response, next:NextFunction) =>{
     const user = (req as RequestWithUser).user;
     const productId = parseInt(req.params.id);
-    let cart = await getCart(user.id!);
-    let _product = await getProductById(productId);
-    if(!_product){
-        return next(new BadRequestException());
-    }
 
     try {
+        let cart = await getCart(user.id!);
+        let _product = await getProductById(productId);
+        if(!_product){
+            return next(new BadRequestException());
+        }
+
         await removeFromCart(cart!, _product);
         return res.status(204).json("Product was successfully deleted from cart");
     }catch (err){
@@ -65,7 +66,6 @@ export const removeAllItemFromCart = async (req: Request, res:Response, next:Nex
            removeFromCart(cart!, product);
         })
         res.json(price)
-        // res.status(200).json("Transaction finalized correctly")
     }catch (err){
         return next(new BadRequestException());
     }

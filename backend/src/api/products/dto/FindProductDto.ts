@@ -1,4 +1,4 @@
-import {IsInt, IsOptional, IsString} from "class-validator";
+import {IsOptional, IsString} from "class-validator";
 
 export class FindProductDto {
     @IsString()

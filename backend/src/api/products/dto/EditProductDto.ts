@@ -1,4 +1,4 @@
-import {IsString, IsNumber, IsNotEmpty, IsOptional} from "class-validator";
+import {IsNumber, IsOptional, IsString} from "class-validator";
 
 export class EditProductDto{
     @IsString()
