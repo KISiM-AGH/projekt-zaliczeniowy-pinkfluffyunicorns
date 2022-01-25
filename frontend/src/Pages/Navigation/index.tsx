@@ -28,7 +28,7 @@ export const Navigation = () => {
                         <li className={getActive(path, '/adminPanel')}>
                             <Link to='/adminPanel'>AdminPanel</Link>
                         </li>}
-                    <li className={getActive(path, '/logout')}>
+                    <li data-e2e="logout" className={getActive(path, '/logout')}>
                         <Link to='/logout'> Wyloguj się </Link>
                     </li>
                 </>
@@ -36,10 +36,10 @@ export const Navigation = () => {
                     <li className={getActive(path, '/')}>
                         <Link to='/'>Strona główna</Link>
                     </li>
-                    <li className={getActive(path, '/login')}>
+                    <li data-e2e="login" className={getActive(path, '/login')}>
                         <Link to='/login'> Zaloguj się</Link>
                     </li>
-                    <li className={getActive(path, '/register')}>
+                    <li data-e2e="register" className={getActive(path, '/register')}>
                         <Link to='/register'> Zarejestruj się </Link>
                     </li>
                 </>

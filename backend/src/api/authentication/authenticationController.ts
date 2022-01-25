@@ -58,7 +58,7 @@ export const logout = async (req: Request, res: Response, next: NextFunction) =>
         if(user.role ==="ADMIN" ){
             res.clearCookie("isAdmin");
         }
-        res.status(200).send("OK");
+        return res.status(200).send("OK");
     }catch (err){
         return next(new BadRequestException());
     }
