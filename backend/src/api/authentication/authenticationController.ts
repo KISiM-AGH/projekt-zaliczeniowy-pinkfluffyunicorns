@@ -9,6 +9,7 @@ import {UserDto} from "../users/dto/UserDto";
 import {getUserByEmail} from "../users/usersService";
 import {signedCookie} from "cookie-parser";
 import {constants} from "http2";
+import {RequestWithUser} from "../../typeorm/types/Express";
 
 export const basicAuthentication = async (req: Request, res: Response, next: NextFunction) => {
     const authHeader = req.headers.authorization;
@@ -42,6 +43,8 @@ export const basicAuthentication = async (req: Request, res: Response, next: Nex
         }
         res.cookie('auth', token, httpCookie);
         res.cookie('isLogged', true, publicCookies);
+        if(user.userRole === "ADMIN")
+            res.cookie('isAdmin',true,publicCookies);
         return res.send(new UserDto(user))
     }catch (err){
         return next(new BadRequestException());
@@ -50,8 +53,18 @@ export const basicAuthentication = async (req: Request, res: Response, next: Nex
 
 
 export const logout = async (req: Request, res: Response, next: NextFunction) => {
-    res.clearCookie("auth");
-    res.clearCookie("isLogged");
+    const user = (req as RequestWithUser).user;
+    try{
+        res.clearCookie("auth");
+        res.clearCookie("isLogged");
+        if(user.role ==="ADMIN" ){
+            res.clearCookie("isAdmin");
+        }
+        res.status(200).send("OK");
+    }catch (err){
 
-    res.status(200).send("OK");
+    }
+
+
+
 }

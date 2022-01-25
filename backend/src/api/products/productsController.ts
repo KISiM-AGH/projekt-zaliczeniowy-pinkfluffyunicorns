@@ -1,5 +1,5 @@
 import {NextFunction, Request, Response} from "express";
-import {createProduct, deleteProduct, getProductByName, getProducts} from "./productsService";
+import {createProduct, deleteProduct, getProductById, getProductByName, getProducts} from "./productsService";
 import {BadRequestException} from "../../exceptions/BadRequestException";
 import {CreateProductDto} from "./dto/CreateProductDto";
 import {ListProductDto} from "./dto/ListProductDto";
@@ -26,8 +26,10 @@ export const addProduct = async (req: Request, res: Response, next: NextFunction
 }
 
 export const removeProduct = async (req: Request, res: Response, next:NextFunction) =>{
-    const data = req.body as FindProductDto;
-    let product = await getProductByName(data.productName);
+    const id = parseInt(req.params.id)
+    // const data = req.body as FindProductDto;
+    // let product = await getProductByName(data.productName);
+    let product = await getProductById(id);
 
     if(!product){
         return next(new BadRequestException());
@@ -52,4 +54,18 @@ export const listProducts = async (req: Request, res: Response, next: NextFuncti
         return next(new BadRequestException((<Error>err).message));
     }
 };
+
+export const showProduct = async (req: Request, res:Response, next : NextFunction) =>{
+    const id = parseInt(req.params.id);
+
+    try{
+        const product = await getProductById(id);
+        if(!product){
+            return next(new BadRequestException());
+        }
+        res.json(product);
+    }catch (err){
+        return next (new BadRequestException())
+    }
+}
 

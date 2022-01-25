@@ -1,14 +1,14 @@
 import {Router} from "express";
 
-import users from "./users";
+import users from "./user";
 import authentication from "./authentication";
-import products from "./products"
+import products from "./product"
 import cart from "./cart";
 const router = Router();
 
-router.use('/users', users);
+router.use('/user', users);
 router.use('/auth', authentication);
-router.use('/products', products);
+router.use('/product', products);
 router.use('/cart', cart);
 
 
