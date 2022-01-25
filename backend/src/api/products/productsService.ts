@@ -4,6 +4,7 @@ import {ProductEntity} from "../../typeorm/entity/ProductEntity";
 import {getCustomRepository, Like} from "typeorm";
 import {SearchProductDto} from "./dto/SearchProductDto";
 import {FindProductDto} from "./dto/FindProductDto";
+import {EditProductDto} from "./dto/EditProductDto";
 
 export const getProductByName = async (productName:string) : Promise <ProductEntity | undefined> =>{
     const productRepository = getCustomRepository(ProductRepository);
@@ -51,4 +52,14 @@ export const createProduct = async (data: CreateProductDto) : Promise<ProductEnt
 export const deleteProduct = async (data: ProductEntity) =>{
     const productRepository = getCustomRepository(ProductRepository);
     return await productRepository.remove(data);
+}
+
+export const editProduct = async (product: ProductEntity, data: EditProductDto): Promise<ProductEntity> =>{
+    product.productName = data.productName;
+    product.price = data.price;
+    product.description = data.description;
+    product.quantity = data.quantity;
+
+    const productRepository = getCustomRepository(ProductRepository);
+    return productRepository.save(product);
 }
