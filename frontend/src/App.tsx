@@ -7,6 +7,8 @@ import {MainPage} from "./Pages/MainPage/mainPage";
 import {Register} from "./Pages/Register/register";
 import {Logout} from "./Pages/Logout/logout";
 import {Cart} from "./Pages/Cart/cart";
+import {AdminPanel} from "./Pages/AdminPanel/adminPanel";
+import {AddProduct} from "./Pages/AdminPanel/addProduct";
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
             <Route path="/register" element={<Register/>}/>
             <Route path="/logout" element={<Logout/>}/>
             <Route path="/cart" element={<Cart/>}/>
+            <Route path="/adminPanel" element={<AdminPanel/>}/>
+            <Route path="/addProductPanel" element={<AddProduct/>}/>
             <Route element={<MainPage/>}/>
           {/*<Route path="/books/add" element={<AuthRequired><BookForm/></AuthRequired>}/>*/}
           {/*<Route path="/books/edit/:id" element={<AuthRequired><BookForm/></AuthRequired>}/>*/}
