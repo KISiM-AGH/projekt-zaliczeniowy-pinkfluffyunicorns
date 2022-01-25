@@ -1,17 +1,6 @@
-import {
-    Entity,
-    Column,
-    PrimaryGeneratedColumn,
-    ManyToMany,
-    OneToMany,
-    ManyToOne,
-    OneToOne,
-    JoinTable,
-    JoinColumn
-} from "typeorm";
+import {Entity, JoinColumn, JoinTable, ManyToMany, OneToOne, PrimaryGeneratedColumn} from "typeorm";
 import {UserEntity} from "./UserEntity";
 import {ProductEntity} from "./ProductEntity";
-// import {CartItemEntity} from "./CartItemEntity";
 
 @Entity()
 export class CartEntity{
@@ -22,10 +11,8 @@ export class CartEntity{
     @JoinColumn()
     client : UserEntity;
 
-    // @OneToMany(type => CartItemEntity, products => products.id)
     @ManyToMany(type => ProductEntity, products => products.cart, {cascade:true,
     eager:true})
     @JoinTable()
     products : ProductEntity[]
-    // products : CartItemEntity[]
 }

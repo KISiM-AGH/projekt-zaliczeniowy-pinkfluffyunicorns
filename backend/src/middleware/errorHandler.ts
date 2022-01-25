@@ -20,5 +20,5 @@ const handleValidationError = (validationErrors: ValidationError[], req: Request
 }
 
 export  const routingNotFoundHandler = (req: Request, res: Response, next: NextFunction) => {
-    return res.status(404).json({errors:["routing not found"]});
+    return res.status(404).json({errors:["Page not found"]});
 }

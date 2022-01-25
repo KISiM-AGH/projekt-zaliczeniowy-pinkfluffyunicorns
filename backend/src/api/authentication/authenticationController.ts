@@ -1,4 +1,4 @@
-import {CookieOptions, NextFunction, Request,Response} from "express";
+import {CookieOptions, NextFunction, Request, Response} from "express";
 import {UserNotFoundException} from "../../exceptions/UserNotFoundException";
 import {AccessDeniedException} from "../../exceptions/AccessDeniedException";
 import {sign} from "../../services/jwt";
@@ -7,8 +7,6 @@ import {BadRequestException} from "../../exceptions/BadRequestException";
 import {matchPassword} from "../../services/hashPassword";
 import {UserDto} from "../users/dto/UserDto";
 import {getUserByEmail} from "../users/usersService";
-import {signedCookie} from "cookie-parser";
-import {constants} from "http2";
 import {RequestWithUser} from "../../typeorm/types/Express";
 
 export const basicAuthentication = async (req: Request, res: Response, next: NextFunction) => {
@@ -62,7 +60,7 @@ export const logout = async (req: Request, res: Response, next: NextFunction) =>
         }
         res.status(200).send("OK");
     }catch (err){
-
+        return next(new BadRequestException());
     }
 
 

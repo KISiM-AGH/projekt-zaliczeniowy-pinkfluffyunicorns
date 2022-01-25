@@ -12,7 +12,6 @@ import {CreateProductDto} from "./dto/CreateProductDto";
 import {ListProductDto} from "./dto/ListProductDto";
 import {ProductExistException} from "../../exceptions/ProductExistException";
 import {SearchProductDto} from "./dto/SearchProductDto";
-import {FindProductDto} from "./dto/FindProductDto";
 import {EditProductDto} from "./dto/EditProductDto";
 import {ProductNotFoundException} from "../../exceptions/ProductNotFoundException";
 
@@ -36,8 +35,6 @@ export const addProduct = async (req: Request, res: Response, next: NextFunction
 
 export const removeProduct = async (req: Request, res: Response, next:NextFunction) =>{
     const id = parseInt(req.params.id)
-    // const data = req.body as FindProductDto;
-    // let product = await getProductByName(data.productName);
     let product = await getProductById(id);
 
     if(!product){
