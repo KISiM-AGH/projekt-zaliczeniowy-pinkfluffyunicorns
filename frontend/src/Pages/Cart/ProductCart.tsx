@@ -1,13 +1,12 @@
 import React, {FunctionComponent} from "react"
-import { Card, Image, Text, Badge, Button, Group, useMantineTheme } from '@mantine/core';
-import {useCookies} from "@react-smart/react-cookie-service";
-import product, {Product} from "../../Actions/products"
+import { Card, Text, Badge, Button, Group, useMantineTheme } from '@mantine/core';
 
 interface Props {
     id: number,
     productName : string,
     description: string,
-    price : number
+    price : number,
+    delete : Function
 }
 
 const ProductCart: FunctionComponent<Props> = (props: Props) => {
@@ -16,10 +15,6 @@ const ProductCart: FunctionComponent<Props> = (props: Props) => {
     const secondaryColor = theme.colorScheme === 'dark'
         ? theme.colors.dark[1]
         : theme.colors.gray[7];
-
-    const toDelete = (id : number) => {
-        product.deleteFromCart(id);
-    }
 
     return <Card style={{ background: '#ffccff'}}>
         <Group position="apart" style={{ marginBottom: 5, marginTop: theme.spacing.sm}}>
@@ -32,7 +27,7 @@ const ProductCart: FunctionComponent<Props> = (props: Props) => {
         <Text size="sm" style={{ color: secondaryColor, lineHeight: 1.5 }}>
             {props.description}
         </Text>
-        <Button variant="light" color="#ff4d4d" fullWidth style={{marginTop: 14}} onClick={() => toDelete(props.id)}>
+        <Button variant="light" color="#ff4d4d" fullWidth style={{marginTop: 14}} onClick={() => props.delete(props.id)}>
             Usuń produkt
         </Button>
     </Card>

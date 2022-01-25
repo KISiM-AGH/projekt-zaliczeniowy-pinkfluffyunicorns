@@ -1,21 +1,21 @@
 import React, {FunctionComponent} from "react"
-import { Card, Text, Badge, Button, Group, useMantineTheme } from '@mantine/core';
-import {useCookies} from "@react-smart/react-cookie-service";
-import product from "../../Actions/products"
+import { Card, Image, Text, Badge, Button, Group, useMantineTheme } from '@mantine/core';
+import {useNavigate} from "react-router-dom";
 
 interface Props {
     id: number,
     productName : string,
     description: string,
-    price : number
+    price : number,
+    delete : Function
 }
 
-const ProductCart: FunctionComponent<Props> = (props: Props) => {
-    const { check } = useCookies();
+const AdminProduct: FunctionComponent<Props> = (props: Props) => {
     const theme = useMantineTheme();
+    const navigate = useNavigate();
 
-    const toCart = (id : number) => {
-        product.addToCart(id)
+    const editProduct = (id : number) => {
+        navigate(`/product/edit/${id}`)
     }
 
     const secondaryColor = theme.colorScheme === 'dark'
@@ -26,6 +26,7 @@ const ProductCart: FunctionComponent<Props> = (props: Props) => {
         <Group position="apart" style={{ marginBottom: 5, marginTop: theme.spacing.sm}}>
             <Text weight={500}>{props.productName}</Text>
             <Badge color="pink" variant="light">
+                {/*{props.id}*/}
                 {props.price} $
             </Badge>
         </Group>
@@ -33,13 +34,15 @@ const ProductCart: FunctionComponent<Props> = (props: Props) => {
         <Text size="sm" style={{ color: secondaryColor, lineHeight: 1.5 }}>
             {props.description}
         </Text>
-        {check('isLogged') &&
-            <Button variant="light" color="blue" fullWidth style={{marginTop: 14}} onClick={() => toCart(props.id)}>
-                Dodaj do koszyka
-            </Button>
-        }
+        <Button variant="light" color="blue" fullWidth style={{marginTop: 14}} onClick={() => editProduct(props.id)}>
+            Edytuj produkt
+        </Button>
+        <Button variant="light" color="blue" fullWidth style={{marginTop: 14}} onClick={() => props.delete(props.id)}>
+            Usuń produkt
+        </Button>
+
 
     </Card>
 }
 
-export default ProductCart
+export default AdminProduct

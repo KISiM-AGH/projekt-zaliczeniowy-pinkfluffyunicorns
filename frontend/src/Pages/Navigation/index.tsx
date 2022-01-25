@@ -43,9 +43,6 @@ export const Navigation = () => {
                         <Link to='/register'> Zarejestruj się </Link>
                     </li>
                 </>
-
-
-
             }
         </ul>
     </nav>

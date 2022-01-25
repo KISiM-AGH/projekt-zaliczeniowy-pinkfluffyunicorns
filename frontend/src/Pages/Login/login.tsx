@@ -9,9 +9,6 @@ import styles from "./Login.module.css";
 interface Props {
 }
 
-function ErrorIcon() {
-    return null;
-}
 
 export const Login: FunctionComponent<Props> = (props: Props) => {
     const [username, setUsername] = useState<string>("");
@@ -20,7 +17,7 @@ export const Login: FunctionComponent<Props> = (props: Props) => {
     const navigate = useNavigate();
 
     const handleSubmit = (event: FormEvent) => {
-        event.preventDefault();     // Niezbedne by strona sie nie przeladowala!
+        event.preventDefault();
         auth.login(username, password).then(
             () => navigate('/')
         ).catch(() => setError(true)
@@ -65,7 +62,7 @@ export const Login: FunctionComponent<Props> = (props: Props) => {
             {error &&
                 <Center>
 
-                    <Notification icon={<ErrorIcon/>} onClose={() => {
+                    <Notification onClose={() => {
                         setError(false)
                     }} color="red">
                         Błędna nazwa użytkownika lub hasło
