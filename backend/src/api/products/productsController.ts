@@ -1,11 +1,20 @@
 import {NextFunction, Request, Response} from "express";
-import {createProduct, deleteProduct, getProductById, getProductByName, getProducts} from "./productsService";
+import {
+    createProduct,
+    deleteProduct,
+    editProduct,
+    getProductById,
+    getProductByName,
+    getProducts
+} from "./productsService";
 import {BadRequestException} from "../../exceptions/BadRequestException";
 import {CreateProductDto} from "./dto/CreateProductDto";
 import {ListProductDto} from "./dto/ListProductDto";
 import {ProductExistException} from "../../exceptions/ProductExistException";
 import {SearchProductDto} from "./dto/SearchProductDto";
 import {FindProductDto} from "./dto/FindProductDto";
+import {EditProductDto} from "./dto/EditProductDto";
+import {ProductNotFoundException} from "../../exceptions/ProductNotFoundException";
 
 
 export const addProduct = async (req: Request, res: Response, next: NextFunction) =>{
@@ -61,11 +70,27 @@ export const showProduct = async (req: Request, res:Response, next : NextFunctio
     try{
         const product = await getProductById(id);
         if(!product){
-            return next(new BadRequestException());
+            return next(new ProductNotFoundException());
         }
         res.json(product);
     }catch (err){
         return next (new BadRequestException())
+    }
+}
+
+export const editProductCont = async(req: Request, res:Response, next: NextFunction)=>{
+    const id = parseInt(req.params.id);
+    const data = req.body as EditProductDto;
+    try {
+        let product = await getProductById(id);
+        if(!product){
+            return next(new ProductNotFoundException());
+        }
+
+        product = await editProduct(product, data);
+        return res.json(product);
+    }catch (err){
+        return next(new BadRequestException());
     }
 }
 

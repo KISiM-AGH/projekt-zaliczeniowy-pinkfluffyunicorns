@@ -1,10 +1,14 @@
 import {Container, Grid} from "@mantine/core";
-import {useState} from "react";
-import {Product} from "../../Actions/products";
+import {useEffect, useState} from "react";
 import ProductCart from "./ProductCart";
+import product, {Product} from "../../Actions/products"
 
 export const Cart = () => {
     const [productInCart, setproductInCart] = useState<Product[]>([])
+
+    useEffect(() => {
+        product.getCart().then(response => setproductInCart(response.data))
+    })
 
     return (
         <Grid>
