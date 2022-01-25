@@ -21,11 +21,11 @@ export const Navigation = () => {
                     <li className={getActive(path, '/')}>
                         <Link to='/'>Strona główna</Link>
                     </li>
-                    <li className={getActive(path, '/cart')}>
+                    <li data-e2e="cart" className={getActive(path, '/cart')}>
                         <Link to='/cart'>Koszyk</Link>
                     </li>
                     {check('isAdmin') &&
-                        <li className={getActive(path, '/adminPanel')}>
+                        <li data-e2e="adminPanel" className={getActive(path, '/adminPanel')}>
                             <Link to='/adminPanel'>AdminPanel</Link>
                         </li>}
                     <li data-e2e="logout" className={getActive(path, '/logout')}>

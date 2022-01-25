@@ -36,7 +36,9 @@ export const Register: FunctionComponent<Props> = (props: Props) => {
                 <form onSubmit={handleSubmit}>
                     <div>
                         <label htmlFor='email'>Email</label>
-                        <input id='email'
+                        <input
+                            data-e2e="email_input"
+                            id='email'
                                 name='email'
                                 type='text'
                                 required
@@ -46,8 +48,10 @@ export const Register: FunctionComponent<Props> = (props: Props) => {
                     </div>
                     <div>
                         <label htmlFor='name'>Imię</label>
-                        <input id='name'
-                               name='email'
+                        <input
+                            data-e2e="name_input"
+                            id='name'
+                               name='name'
                                type='text'
                                required
                                className={styles.Input}
@@ -56,7 +60,9 @@ export const Register: FunctionComponent<Props> = (props: Props) => {
                     </div>
                     <div>
                         <label htmlFor='surname'>Nazwisko</label>
-                        <input id='surname'
+                        <input
+                            data-e2e="surname_input"
+                            id='surname'
                                name='surname'
                                type='text'
                                required
@@ -66,7 +72,9 @@ export const Register: FunctionComponent<Props> = (props: Props) => {
                     </div>
                     <div>
                         <label htmlFor='password'>Hasło</label>
-                        <input id='password'
+                        <input
+                            data-e2e="password_input"
+                            id='password'
                                name='password'
                                type='password'
                                required
@@ -78,7 +86,9 @@ export const Register: FunctionComponent<Props> = (props: Props) => {
                     <div className={styles.Address}>
                         <div className={styles.Address_container}>
                             <label htmlFor='street'>Ulica</label>
-                            <input id='street'
+                            <input
+                                data-e2e="street_input"
+                                id='street'
                                    name='street'
                                    type='text'
                                    required
@@ -88,7 +98,9 @@ export const Register: FunctionComponent<Props> = (props: Props) => {
                         </div>
                         <div className={styles.Address_container}>
                             <label htmlFor='homeNumber'>Numer domu</label>
-                            <input id='homeNumber'
+                            <input
+                                data-e2e="homeNumber_input"
+                                id='homeNumber'
                                    name='homeNumber'
                                    type='text'
                                    required
@@ -100,7 +112,9 @@ export const Register: FunctionComponent<Props> = (props: Props) => {
                     <div className={styles.Address}>
                         <div className={styles.Address_container}>
                             <label htmlFor='postalCode'>Numer pocztowy</label>
-                            <input id='postalCode'
+                            <input
+                                data-e2e="postalCode_input"
+                                id='postalCode'
                                    name='postalCode'
                                    type='text'
                                    required
@@ -110,7 +124,9 @@ export const Register: FunctionComponent<Props> = (props: Props) => {
                         </div>
                         <div className={styles.Address_container}>
                             <label htmlFor='city'>Miasto</label>
-                            <input id='city'
+                            <input
+                                data-e2e="city_input"
+                                id='city'
                                    name='city'
                                    type='text'
                                    required
@@ -121,7 +137,7 @@ export const Register: FunctionComponent<Props> = (props: Props) => {
 
                     </div>
 
-                    <button type="submit" className={styles.Input}>Zarejestruj się </button>
+                    <button data-e2e="submit_button" type="submit" className={styles.Input}>Zarejestruj się </button>
                 </form>
 
             </Paper>
