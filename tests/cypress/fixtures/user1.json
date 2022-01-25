@@ -1,0 +1,10 @@
+{
+  "email" : "e2e_test_new@mail.com",
+  "lastName" : "NewTest",
+  "firstName": "E2e",
+  "password" : "verystrongpassword123",
+  "city" : "Testowice",
+  "street" : "Pointowe",
+  "homeNumber" : "3",
+  "postalCode" : "20-333"
+}

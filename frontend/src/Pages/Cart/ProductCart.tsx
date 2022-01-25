@@ -27,7 +27,7 @@ const ProductCart: FunctionComponent<Props> = (props: Props) => {
         <Text size="sm" style={{ color: secondaryColor, lineHeight: 1.5 }}>
             {props.description}
         </Text>
-        <Button variant="light" color="#ff4d4d" fullWidth style={{marginTop: 14}} onClick={() => props.delete(props.id)}>
+        <Button data-e2e="removeFromCart" variant="light" color="#ff4d4d" fullWidth style={{marginTop: 14}} onClick={() => props.delete(props.id)}>
             Usuń produkt
         </Button>
     </Card>

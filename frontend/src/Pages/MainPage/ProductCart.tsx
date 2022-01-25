@@ -34,7 +34,7 @@ const ProductCart: FunctionComponent<Props> = (props: Props) => {
             {props.description}
         </Text>
         {check('isLogged') &&
-            <Button variant="light" color="blue" fullWidth style={{marginTop: 14}} onClick={() => toCart(props.id)}>
+            <Button data-e2e="addToCart" variant="light" color="blue" fullWidth style={{marginTop: 14}} onClick={() => toCart(props.id)}>
                 Dodaj do koszyka
             </Button>
         }

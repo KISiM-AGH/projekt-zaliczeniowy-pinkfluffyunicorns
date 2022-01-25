@@ -66,7 +66,7 @@ export const removeAllItemFromCart = async (req: Request, res:Response, next:Nex
            removeFromCart(cart!, product);
         })
         // res.json(price)
-        return res.status(200).send("OK");
+        return res.status(204).send("OK");
     }catch (err){
         return next(new BadRequestException());
     }

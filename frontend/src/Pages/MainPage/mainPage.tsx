@@ -14,7 +14,7 @@ export const MainPage = () => {
         <Grid style={{margin: '10px 0' }}>
             {productToshop.map((product) =>
                 <Grid.Col span={4} key={product.id}>
-                    <ProductCart id={product.id} productName={product.productName} description={product.description} price={product.price} />
+                    <ProductCart data-e2e="product" id={product.id} productName={product.productName} description={product.description} price={product.price} />
                 </Grid.Col>
             )}
         </Grid>
