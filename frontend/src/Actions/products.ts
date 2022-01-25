@@ -9,8 +9,9 @@ export interface Product {
 }
 
 const products = {
-    getAll: () => client.get<Product[]>('/products'),
-    addToCart: (name : string) => client.post('/cart', {productName : name})
+    getAll: () => client.get<Product[]>('/product'),
+    addToCart: (id : number) => client.post(`/cart/${id}`),
+    getCart: () => client.get<Product[]>('/cart')
 }
 
 export default products

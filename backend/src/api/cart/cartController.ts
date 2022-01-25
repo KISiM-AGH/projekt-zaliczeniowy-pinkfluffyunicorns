@@ -9,7 +9,7 @@ export const showCartItems = async (req: Request, res:Response, next: NextFuncti
     const user = (req as RequestWithUser).user;
     try{
         let cart = await getCart(user.id!);
-        return res.json(cart)
+        return res.json(cart?.products)
     }catch (err){
         return next(new BadRequestException((<Error> err).message));
     }

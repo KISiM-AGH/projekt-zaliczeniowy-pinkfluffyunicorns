@@ -7,7 +7,7 @@ import {token} from "../../middleware/token";
 import {isAdmin} from "../../middleware/isAdmin";
 
 const router = Router();
-router.get('/',queryValidate(SearchProductDto),token(true), listProducts);
+router.get('/',queryValidate(SearchProductDto), listProducts);
 router.post('/', bodyValidate(CreateProductDto),token(true),isAdmin(true), addProduct);
 router.delete('/:id',token(true), isAdmin(true), removeProduct)
 router.get('/:id', showProduct);

@@ -14,8 +14,8 @@ const ProductCart: FunctionComponent<Props> = (props: Props) => {
     const { check } = useCookies();
     const theme = useMantineTheme();
 
-    const toCart = (name : string) => {
-        product.addToCart(name)
+    const toCart = (id : number) => {
+        product.addToCart(id)
     }
 
     const secondaryColor = theme.colorScheme === 'dark'
@@ -35,7 +35,7 @@ const ProductCart: FunctionComponent<Props> = (props: Props) => {
             {props.description}
         </Text>
         {check('isLogged') &&
-            <Button variant="light" color="blue" fullWidth style={{marginTop: 14}} onClick={() => toCart(props.productName)}>
+            <Button variant="light" color="blue" fullWidth style={{marginTop: 14}} onClick={() => toCart(props.id)}>
                 Dodaj do koszyka
             </Button>
         }
