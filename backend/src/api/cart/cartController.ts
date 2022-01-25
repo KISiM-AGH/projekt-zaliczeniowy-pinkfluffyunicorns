@@ -1,13 +1,9 @@
 import {NextFunction, Request, Response} from "express";
-import {token} from "../../middleware/token";
 import {RequestWithUser} from "../../typeorm/types/Express";
 import {addToCart, getCart, removeFromCart} from "./cartService";
 import {BadRequestException} from "../../exceptions/BadRequestException";
-import {getCustomRepository} from "typeorm";
-import {UserRepository} from "../../typeorm/repositories/UserRepository";
-import {DeleteProductDto} from "../products/dto/DeleteProductDto";
+import {FindProductDto} from "../products/dto/FindProductDto";
 import {getProductByName} from "../products/productsService";
-import products from "../../routes/v1/products";
 
 export const showCartItems = async (req: Request, res:Response, next: NextFunction) =>{
     const user = (req as RequestWithUser).user;
@@ -21,7 +17,7 @@ export const showCartItems = async (req: Request, res:Response, next: NextFuncti
 
 export const addItemToCart = async (req: Request, res:Response, next:NextFunction) =>{
     const user = (req as RequestWithUser).user;
-    const product = req.body as DeleteProductDto;
+    const product = req.body as FindProductDto;
     let cart = await getCart(user.id!);
     let _product = await getProductByName(product.productName);
     if(!_product){
@@ -39,7 +35,7 @@ export const addItemToCart = async (req: Request, res:Response, next:NextFunctio
 
 export const removeItemFromCart = async (req: Request, res:Response, next:NextFunction) =>{
     const user = (req as RequestWithUser).user;
-    const product = req.body as DeleteProductDto;
+    const product = req.body as FindProductDto;
     let cart = await getCart(user.id!);
     let _product = await getProductByName(product.productName);
     if(!_product){

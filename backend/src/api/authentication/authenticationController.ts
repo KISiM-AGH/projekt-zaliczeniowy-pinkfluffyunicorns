@@ -7,6 +7,8 @@ import {BadRequestException} from "../../exceptions/BadRequestException";
 import {matchPassword} from "../../services/hashPassword";
 import {UserDto} from "../users/dto/UserDto";
 import {getUserByEmail} from "../users/usersService";
+import {signedCookie} from "cookie-parser";
+import {constants} from "http2";
 
 export const basicAuthentication = async (req: Request, res: Response, next: NextFunction) => {
     const authHeader = req.headers.authorization;

@@ -1,6 +1,6 @@
 import {ProductEntity} from "../../../typeorm/entity/ProductEntity";
 
-export class ProductDto {
+export class ListProductDto {
     readonly productName: string;
     readonly description : string;
     readonly productType : string;

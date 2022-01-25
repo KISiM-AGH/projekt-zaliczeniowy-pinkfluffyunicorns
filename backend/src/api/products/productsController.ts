@@ -1,18 +1,11 @@
-import {NextFunction, Response, Request} from "express";
-import {createProduct, getProductByName, deleteProduct, getProducts} from "./productsService";
+import {NextFunction, Request, Response} from "express";
+import {createProduct, deleteProduct, getProductByName, getProducts} from "./productsService";
 import {BadRequestException} from "../../exceptions/BadRequestException";
 import {CreateProductDto} from "./dto/CreateProductDto";
-import {ProductDto} from "./dto/ProductDto";
+import {ListProductDto} from "./dto/ListProductDto";
 import {ProductExistException} from "../../exceptions/ProductExistException";
 import {SearchProductDto} from "./dto/SearchProductDto";
-import {DeleteProductDto} from "./dto/DeleteProductDto";
-import exp from "constants";
-import {UserDto} from "../users/dto/UserDto";
-import {getUserByEmail} from "../users/usersService";
-import {CartEntity} from "../../typeorm/entity/CartEntity";
-import {getCustomRepository} from "typeorm";
-import {UserRepository} from "../../typeorm/repositories/UserRepository";
-import {CartRepository} from "../../typeorm/repositories/CartRepository";
+import {FindProductDto} from "./dto/FindProductDto";
 
 
 export const addProduct = async (req: Request, res: Response, next: NextFunction) =>{
@@ -26,14 +19,14 @@ export const addProduct = async (req: Request, res: Response, next: NextFunction
 
     try{
         const newProduct = await createProduct(req.body);
-        res.status(201).json(new ProductDto(newProduct));
+        res.status(201).json(new ListProductDto(newProduct));
     }catch (err){
         return next(new BadRequestException());
     }
 }
 
 export const removeProduct = async (req: Request, res: Response, next:NextFunction) =>{
-    const data = req.body as DeleteProductDto;
+    const data = req.body as FindProductDto;
     let product = await getProductByName(data.productName);
 
     if(!product){

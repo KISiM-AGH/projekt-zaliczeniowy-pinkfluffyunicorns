@@ -1,6 +1,6 @@
 import {IsInt, IsOptional, IsString} from "class-validator";
 
-export class DeleteProductDto{
+export class FindProductDto {
     @IsString()
     @IsOptional()
     productName : string;

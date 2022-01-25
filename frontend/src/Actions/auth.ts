@@ -10,7 +10,6 @@ const auth = {
             }
         }),
 
-
     logout: () => client.post('/auth/logout')
 }
 

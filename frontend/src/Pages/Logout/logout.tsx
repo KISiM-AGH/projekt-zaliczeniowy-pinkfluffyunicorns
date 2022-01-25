@@ -19,9 +19,8 @@ export const Logout = () => {
         <Space h="md"/>
         <Center>
             <div>
-                {message}
+              {message}
             </div>
         </Center>
     </Container>
-
 }
