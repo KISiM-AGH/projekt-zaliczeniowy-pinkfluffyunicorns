@@ -1,9 +1,18 @@
-import {Container} from "@mantine/core";
+import {Container, Grid} from "@mantine/core";
+import {useState} from "react";
+import {Product} from "../../Actions/products";
+import ProductCart from "./ProductCart";
 
 export const Cart = () => {
+    const [productInCart, setproductInCart] = useState<Product[]>([])
+
     return (
-        <Container size="xs" padding="xs">
-            Koszyk naszego sklepu
-        </Container>
+        <Grid>
+            {productInCart.map((product) =>
+                <Grid.Col span={4} key={product.id}>
+                    <ProductCart id={product.id} productName={product.productName} description={product.description} price={product.price} />
+                </Grid.Col>
+            )}
+        </Grid>
     )
 }

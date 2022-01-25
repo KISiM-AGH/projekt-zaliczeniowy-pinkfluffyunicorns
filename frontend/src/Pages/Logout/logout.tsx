@@ -1,33 +1,26 @@
 import auth from "../../Actions/auth";
 import {useNavigate} from "react-router-dom";
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {Center, Container, Space} from "@mantine/core";
 
-class Props {
-}
 
-export const Logout= (props : Props) => {
-    // const navigate = useNavigate();
-    // auth.logout().then(
-    //     () => navigate('/')
-    // )
-    //
-    // return <h1> Wylogowywanie</h1>
-    useEffect(() => {
-        const timeout = setTimeout(() => {
-            return <h1> Wylogowywanie</h1>
-        }, 500);
-        //return () => clearTimeout(timeout);
-    }, [])
+
+export const Logout = () => {
+    const navigate = useNavigate();
+    const [message, setMessage] = useState("Wylogowywanie");
+    // auth.logout().then(() => {
+    //     setMessage("Wylogowano");
+    //     setTimeout(() => navigate('/'), 5000)
+    // }).catch(() => {}
+
+    auth.logout().then(() => navigate('/'));
 
     return <Container>
         <Space h="md"/>
         <Center>
             <div>
-                Wylogowano...
+              {message}
             </div>
         </Center>
     </Container>
-
-
 }
