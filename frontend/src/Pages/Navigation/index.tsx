@@ -24,6 +24,10 @@ export const Navigation = () => {
                     <li className={getActive(path, '/cart')}>
                         <Link to='/cart'>Koszyk</Link>
                     </li>
+                    {check('isAdmin') &&
+                        <li className={getActive(path, '/adminPanel')}>
+                            <Link to='/adminPanel'>AdminPanel</Link>
+                        </li>}
                     <li className={getActive(path, '/logout')}>
                         <Link to='/logout'> Wyloguj się </Link>
                     </li>
