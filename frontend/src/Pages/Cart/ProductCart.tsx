@@ -11,12 +11,7 @@ interface Props {
 }
 
 const ProductCart: FunctionComponent<Props> = (props: Props) => {
-    const { check } = useCookies();
     const theme = useMantineTheme();
-
-    const toCart = (name : string) => {
-        product.addToCart(name)
-    }
 
     const secondaryColor = theme.colorScheme === 'dark'
         ? theme.colors.dark[1]
@@ -26,7 +21,6 @@ const ProductCart: FunctionComponent<Props> = (props: Props) => {
         <Group position="apart" style={{ marginBottom: 5, marginTop: theme.spacing.sm}}>
             <Text weight={500}>{props.productName}</Text>
             <Badge color="pink" variant="light">
-                {/*{props.id}*/}
                 {props.price} $
             </Badge>
         </Group>
@@ -34,11 +28,6 @@ const ProductCart: FunctionComponent<Props> = (props: Props) => {
         <Text size="sm" style={{ color: secondaryColor, lineHeight: 1.5 }}>
             {props.description}
         </Text>
-        {check('isLogged') &&
-            <Button variant="light" color="blue" fullWidth style={{marginTop: 14}} onClick={() => toCart(props.productName)}>
-                Dodaj do koszyka
-            </Button>
-        }
 
     </Card>
 }
