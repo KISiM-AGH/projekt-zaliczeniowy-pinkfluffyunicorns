@@ -43,6 +43,7 @@ export const basicAuthentication = async (req: Request, res: Response, next: Nex
         res.cookie('isLogged', true, publicCookies);
         if(user.userRole === "ADMIN")
             res.cookie('isAdmin',true,publicCookies);
+
         return res.send(new UserDto(user))
     }catch (err){
         return next(new BadRequestException());
@@ -58,6 +59,7 @@ export const logout = async (req: Request, res: Response, next: NextFunction) =>
         if(user.role ==="ADMIN" ){
             res.clearCookie("isAdmin");
         }
+
         return res.status(200).send("OK");
     }catch (err){
         return next(new BadRequestException());
