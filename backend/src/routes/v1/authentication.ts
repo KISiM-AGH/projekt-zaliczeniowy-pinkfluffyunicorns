@@ -5,6 +5,6 @@ import {token} from "../../middleware/token";
 const router = Router();
 
 router.post('/', basicAuthentication);
-router.post('/logout', logout);
+router.post('/logout',token(true), logout);
 
 export default router;
