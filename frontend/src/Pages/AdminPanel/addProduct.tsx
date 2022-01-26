@@ -54,6 +54,7 @@ export const AddProduct = () => {
                             <input
                                 id="price"
                                 type="number"
+                                min='0.01'
                                 step="0.01"
                                 required
                                 className={styles.Input}
@@ -66,6 +67,7 @@ export const AddProduct = () => {
                             <input
                                 id="quantity"
                                 type="number"
+                                min='0'
                                 required
                                 className={styles.Input}
                                 onChange={(e) => setQuantity(parseInt(e.target.value))}
