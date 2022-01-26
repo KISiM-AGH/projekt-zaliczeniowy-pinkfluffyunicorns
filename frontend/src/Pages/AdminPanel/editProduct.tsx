@@ -84,6 +84,7 @@ export const EditProduct = () => {
                                 value={productToEdit.price}
                                 id="price"
                                 type="number"
+                                step="0.01"
                                 required
                                 className={styles.Input}
                                 onChange={(e) => setPrice(parseFloat(e.target.value))}
