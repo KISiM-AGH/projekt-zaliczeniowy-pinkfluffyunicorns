@@ -1,4 +1,4 @@
-import {IsNotEmpty, IsNumber, IsString} from "class-validator";
+import {IsInt, IsNotEmpty, IsNumber, IsPositive, IsString, Min} from "class-validator";
 
 export class CreateProductDto{
     @IsString()
@@ -11,9 +11,12 @@ export class CreateProductDto{
 
     @IsNumber()
     @IsNotEmpty()
+    @IsPositive()
+    @Min(0.01)
     readonly price : number;
 
-    @IsNumber()
+    @IsInt()
     @IsNotEmpty()
+    @IsPositive()
     readonly quantity : number;
 }
