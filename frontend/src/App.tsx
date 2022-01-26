@@ -24,7 +24,7 @@ function App() {
             <Route path="/logout" element={<Logout/>}/>
             <Route path="/cart" element={<AuthRequired><Cart/></AuthRequired>}/>
             <Route path="/adminPanel" element={<OnlyAdminAccess><AdminPanel/></OnlyAdminAccess>}/>
-            <Route path="/product/add/:id" element={<OnlyAdminAccess><AddProduct/></OnlyAdminAccess>}/>
+            <Route path="/product/add" element={<OnlyAdminAccess><AddProduct/></OnlyAdminAccess>}/>
             <Route path="/product/edit/:id" element={<OnlyAdminAccess><EditProduct/></OnlyAdminAccess>}/>
             <Route element={<MainPage/>}/>
         </Routes>

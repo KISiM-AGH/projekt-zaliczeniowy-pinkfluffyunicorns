@@ -24,7 +24,7 @@ export const AdminPanel = () => {
         <>
             <Container>
                 Admin panel
-                <Button variant="light" color="pink" radius="lg" size="md" uppercase onClick={() => navigate('/addProductPanel')}>
+                <Button variant="light" color="pink" radius="lg" size="md" uppercase onClick={() => navigate('/product/add')}>
                     Dodaj produkt
                 </Button>
             </Container>
